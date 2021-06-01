@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+* {
+  box-sizing: border-box;
+}
+body {
+  box-sizing: border-box;
+  margin: 0px;
+  font-family: Roboto;
+}
+a {
+  text-decoration: none;
+}
+.action:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 96px;
+  .auth-title {
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 41px;
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+  .auth-subtitle {
+    margin: 0px;
+    margin-bottom: 30px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #8A8A8A;
+    span {
+      font-weight: bold;
+    }
+  }
+  .auth-social-btns {
+    max-width: 340px;
+    width: 100%;
+  }
+  .auth-form {
+    max-width: 340px;
+    width: 100%;
+    div.input-block {
+      position: relative;
+      margin-bottom: 10px;
+      span.forgot {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: #00DE5E;
+        font-weight: bold;
+      }
+      span.error {
+        margin-top: 5px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 14px;
+        color: #FF7777;
+        padding-left: 2px;
+      }
+    }
+    
+    div.input-block input {
+      font-weight: 500;
+      font-size: 15px;
+      color: #495055;
+      max-width: 340px;
+      height: 50px;
+      width: 100%;
+      padding: 15px 17px;
+      padding-bottom: 10px !important;
+      padding-top: 24px !important;
+      border: 1.2px solid #8A8A8A;
+      box-sizing: border-box;
+      border-radius: 6px;
+      outline:none;
+    }
+    
+    div.input-block span.placeholder {
+      position: absolute;
+      color:  #8A8A8A;
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      top: 17px;
+      left: 15px;
+      transition: all 0.2s;
+      transform-origin: 0% 0%;
+      background: none;
+      pointer-events: none;
+    }
+    
+    div.input-block input:valid + span.placeholder,
+    div.input-block input:focus + span.placeholder {
+      transform: scale(0.8) translateY(-15px);
+    }
+    //remember me checkbox
+    div.remember-me {
+      padding-left: 1px;
+      .container {
+        display: block;
+        position: relative;
+        padding-left: 40px;
+        margin: 20px 0px;
+        cursor: pointer;
+        font-size: 15px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+          height: 0;
+          width: 0;
+        }
+      }
+      .checkmark-icon {
+        display: none;
+        position: absolute;
+        left: 3px;
+        z-index: 999;
+        top: 3px;
+      }
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        background-color: #eee;
+      } 
+      .container:hover input ~ .checkmark {
+        background-color: #ccc;
+      }
+      .container input:checked ~ .checkmark {
+        background-color: #00DE5E;
+      }
+      .container input:checked ~ {
+        display: block;
+      }
+      .container input:checked ~ .checkmark-icon{
+        display: block;
+      }
+    }
+  }
+}
+
+
