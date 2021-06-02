@@ -903,6 +903,11 @@
     "@babel/helper-validator-identifier" "^7.14.0"
     to-fast-properties "^2.0.0"
 
+"@fortawesome/fontawesome-free@^5.15.3":
+  version "5.15.3"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.3.tgz#c36ffa64a2a239bf948541a97b6ae8d729e09a9a"
+  integrity sha512-rFnSUN/QOtnOAgqFRooTA3H57JLDm0QEG/jPdk+tLQNL/eWd+Aok8g3qCI+Q1xuDPWpGW/i9JySpJVsq8Q0s9w==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -5569,6 +5574,11 @@ mkdirp@^0.5.1, mkdirp@^0.5.3, mkdirp@^0.5.5, mkdirp@~0.5.1:
   dependencies:
     minimist "^1.2.5"
 
+moment@^2.29.1:
+  version "2.29.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
+  integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -8329,6 +8339,13 @@ vue-router@^4.0.8:
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.10"
 
+vue-sidebar-menu@^5.0.0-alpha.9:
+  version "5.0.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/vue-sidebar-menu/-/vue-sidebar-menu-5.0.0-alpha.9.tgz#bbed3ff4309c2a5680d47619cf63014a2d1ccbc1"
+  integrity sha512-ldicT8CCWAWoB7mAaXhpchFe+vLYp0iLykc0fLKa5MQ1mEInc4+YeNVTqEG0LDCn9S8gYfTaJLgOT6AzMFJ1Sw==
+  dependencies:
+    vue "^3.0.2"
+
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-4.1.3.tgz#6d55863a51fa757ab24e89d9371465072aa7bc35"
@@ -8347,7 +8364,7 @@ vue3-carousel@^0.1.21:
   resolved "https://registry.yarnpkg.com/vue3-carousel/-/vue3-carousel-0.1.21.tgz#0dfcf80a813ee01b9b76c4be825c0dbacffdf230"
   integrity sha512-Ft6KiV+4fQ0qGVHsQ9l1posnU0tCKUuE7OBSt2Hspudh+cMJp4wvbvnX9DOPE6lSx9Gp33pn35nba/Y8wMWcwg==
 
-vue@^3.0.0:
+vue@^3.0.0, vue@^3.0.2:
   version "3.0.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.0.11.tgz#c82f9594cbf4dcc869241d4c8dd3e08d9a8f4b5f"
   integrity sha512-3/eUi4InQz8MPzruHYSTQPxtM3LdZ1/S/BvaU021zBnZi0laRUyH6pfuE4wtUeLvI8wmUNwj5wrZFvbHUXL9dw==

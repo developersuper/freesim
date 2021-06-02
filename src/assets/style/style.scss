@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 * {
   box-sizing: border-box;
 }
@@ -157,5 +157,29 @@ a {
     }
   }
 }
+.sidebar-icon {
+  background-color: none;
+  color: white;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: white; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #E8E8E8; 
+  border-radius: 2px;
+  width: 4px;
+}
 
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #E8E8E8; 
+  opacity: 0.7;
+}

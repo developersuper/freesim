@@ -3,11 +3,12 @@ import { createRouter, createWebHistory } from "vue-router";
 import Signup from '@/pages/Signup.vue'
 import Signin from '@/pages/Signin.vue'
 import Landing from '@/pages/Landing.vue'
+import Chatting from '@/pages/Chatting.vue'
 
 const routes = [
   {
     path: '/',
-    redirect: '/landing'
+    redirect: '/chatting'
   },
   {
     path: "/signup",
@@ -23,6 +24,11 @@ const routes = [
     path: "/landing",
     name: "Landing",
     component: Landing
+  },
+  {
+    path: "/chatting",
+    name: "Chatting",
+    component: Chatting
   }
 ];
 
