@@ -120,7 +120,7 @@ div.main-layout {
   display: flex;
   height: 100vh;
   padding-left: 70px;
-  padding-right: 286px;
+  // padding-right: 286px;
   div.sidebarheader {
     display: flex;
     justify-content: center;
