@@ -12,9 +12,11 @@
     "core-js": "^3.6.5",
     "moment": "^2.29.1",
     "vue": "^3.0.0",
+    "vue-modal": "^1.0.2",
     "vue-router": "^4.0.8",
     "vue-sidebar-menu": "^5.0.0-alpha.9",
-    "vue3-carousel": "^0.1.21"
+    "vue3-carousel": "^0.1.21",
+    "vuex": "4.0.0-alpha.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

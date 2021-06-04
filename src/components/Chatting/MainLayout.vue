@@ -1,5 +1,6 @@
 <template>
-  <div class="main-layout">
+  <calls></calls>
+  <div class="main-layout" @contextmenu.prevent="">
     <sidebar-menu 
       :menu="menu" 
       :hideToggle="true" 
@@ -18,11 +19,10 @@
       </template>
     </sidebar-menu>
     <div class="main-box">
-      <LeftBox />
-      <ChatBox />
+      <left-box />
+      <chat-box />
     </div>
     <div class="adv-box">
-      sdfsdf
     </div>
   </div> 
 </template>
@@ -31,6 +31,7 @@
 import { SidebarMenu } from 'vue-sidebar-menu'
 import LeftBox from '@/components/Chatting/LeftBox.vue'
 import ChatBox from '@/components/Chatting/ChatBox.vue'
+import Calls from '@/components/Chatting/Calls.vue'
 
 export default {
   name: 'MainLayout',
@@ -38,6 +39,7 @@ export default {
     SidebarMenu,
     LeftBox,
     ChatBox,
+    Calls,
   },
   data() {
     return {
@@ -102,7 +104,7 @@ export default {
       user: {
         avatar: require('@/assets/images/user.png'),
         name: 'Kim Jonson',
-      }
+      },
     }
   },
   methods: {
@@ -110,7 +112,11 @@ export default {
       event.stopPropagation();
       this.collapsed = !this.collapsed;
     }
-  }
+  },
+  mounted() {
+    console.log('show after mounted', this.show)
+    this.show = true;
+  },
 }
 </script>
 

@@ -1,4 +1,9 @@
 <template>
+  <context-menu :display="true" ref="chatboxheadersettingmenu">
+    <ul class="contextmenu custom-chatboxheadersettingmenu">
+      <li> Delete Conversation</li>
+    </ul>
+  </context-menu>
   <div class="settingsbar">
     <span class="icon action">
       <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -10,7 +15,7 @@
         <path d="M7.55443 6.73349L7.55427 6.73364L5.44444 8.87183L5.22272 9.09653L5.28231 9.40652C5.52613 10.6748 6.08376 11.8859 6.93407 13.0383C7.74981 14.1603 8.8008 15.1142 10.0227 15.8457L10.2747 15.9966L10.5485 15.89L13.1958 14.8594L13.196 14.8593C13.9675 14.5586 14.8403 14.7766 15.3623 15.3863L15.363 15.3871L16.9765 17.2646C17.5814 17.9693 17.5602 19.0013 16.9211 19.686L16.0137 20.6568L16.0132 20.6574C15.255 21.4705 14.1082 21.8319 13.0044 21.6009C10.1349 20.9995 7.28112 18.7687 4.4686 14.7199L4.46858 14.7198C1.65041 10.6634 0.587226 7.24862 1.07542 4.42767L1.07546 4.42746C1.26001 3.35877 2.01023 2.45617 3.05985 2.06168L3.06005 2.06161L4.31328 1.59009L4.31333 1.59008C5.21779 1.24969 6.2238 1.62063 6.67379 2.43347C6.67381 2.43351 6.67383 2.43354 6.67385 2.43358C6.67389 2.43365 6.67392 2.43371 6.67396 2.43378L7.8607 4.5814C7.86076 4.58151 7.86082 4.58162 7.86088 4.58172C8.24768 5.28381 8.12804 6.1526 7.55443 6.73349Z" stroke="#FF0404" stroke-width="1.2"/>
       </svg>
     </span>
-    <span class="setting-icon action">
+    <span class="setting-icon action" @click="openMenu" >
       <span></span>
       <span></span>
       <span></span>
@@ -19,10 +24,19 @@
 </template>
 
 <script>
+import ContextMenu from './elements/ContextMenu'
 
 export default {
   name: 'ChatBoxHeadeSettingsBar',
   components: {
+    ContextMenu,
+  },
+  methods: {
+    openMenu(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      this.$refs.chatboxheadersettingmenu.open(e)
+    },
   }
 }
 </script>
@@ -47,6 +61,14 @@ div.settingsbar {
       border-radius: 100%;
       background-color: #FF1414;
     }
+  }
+}
+ul.custom-chatboxheadersettingmenu {
+  box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.25);
+  li {
+    color: #949494;
+    font-size: 12px;
+    padding: 10px 15px;
   }
 }
 </style>
