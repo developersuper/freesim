@@ -1,7 +1,7 @@
 <template>
   <!-- <div class="menu">Menu---------------------------sdfwef</div> -->
   <div class="chatting">
-    <MainLayout />
+    <main-layout />
   </div>
 </template>
 

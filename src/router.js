@@ -4,11 +4,12 @@ import Signup from '@/pages/Signup.vue'
 import Signin from '@/pages/Signin.vue'
 import Landing from '@/pages/Landing.vue'
 import Chatting from '@/pages/Chatting.vue'
+import Settings from '@/pages/Settings.vue'
 
 const routes = [
   {
     path: '/',
-    redirect: '/chatting'
+    redirect: '/settings'
   },
   {
     path: "/signup",
@@ -29,6 +30,11 @@ const routes = [
     path: "/chatting",
     name: "Chatting",
     component: Chatting
+  },
+  {
+    path: "/settings",
+    name: "Settings",
+    component: Settings,
   }
 ];
 

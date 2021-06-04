@@ -1,8 +1,8 @@
 <template>
   <div class="chat-box">
-    <ChatBoxHeader />
-    <ChatBoxMsgBox />
-    <ChatBoxBottom />
+    <chat-box-header />
+    <chat-box-msg-box />
+    <chat-box-bottom />
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
   components: {
     ChatBoxHeader,
     ChatBoxMsgBox,
-    ChatBoxBottom,
+    ChatBoxBottom
   }
 }
 </script>
