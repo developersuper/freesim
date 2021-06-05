@@ -51,7 +51,7 @@ export default {
 
 <style lang="scss" scoped>
 .choice {
-  padding: 80px 10vw 100px; 
+  padding: 80px 10.208vw 100px; 
   h1.title {
     color: #515151;
     font-weight: bold;

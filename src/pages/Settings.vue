@@ -147,6 +147,12 @@
         </div>
       </div>
     </div>
+    <span class="settings-close action" @click="onClose">
+      <svg width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="30.2724" height="2.25991" rx="0.5" transform="matrix(0.696414 0.71764 -0.716409 0.697681 1.61914 0)" fill="black"/>
+        <rect width="30.2717" height="2.25997" rx="0.5" transform="matrix(0.706482 -0.707731 0.706482 0.707731 0 21.4248)" fill="black"/>
+      </svg>
+    </span>
   </div>
 </template>
 
@@ -173,6 +179,11 @@ export default {
       desktop: true,
       email: false,
       usevoicemail: true,
+    }
+  },
+  methods: {
+    onClose() {
+      this.$router.push('./chatting')
     }
   }
 }
@@ -214,8 +225,7 @@ div.settings {
   }
   div.settings-rightpart {
     width: 100%;
-    padding-top: 146px;
-    padding-left: 132px;
+    padding: 146px 10px 10px 132px;
     overflow-y: auto;
     span.settings-body-title {
       display: block;
@@ -338,5 +348,30 @@ div.settings {
       }
     }
   }
+  span.settings-close {
+    position: absolute;
+    top: 60px;
+    right: 41px;
+  }
+}
+@media only screen and (max-width: 768px) {
+    div.settings {
+      flex-wrap: wrap;
+      div.settings-leftpart {
+        max-width: unset;
+        height: 100vh;
+      }
+      div.settings-rightpart {
+        position: relative;
+        display: flex;
+        padding: 20px;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        div.settings-body {
+          width: 100%;
+        }
+      }
+    }
 }
 </style>

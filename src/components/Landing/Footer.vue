@@ -25,8 +25,8 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
-  padding: 0px 10vw;
-  height: 10vw;
+  padding: 0px 10.208vw;
+  height: 130px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,23 +37,23 @@ export default {
   }
   div.footer-love {
     span.title {
-      font-size: 2vw;
+      font-size: 30px;
       font-weight: bold;
-      margin-bottom: 1.1vw;
+      margin-bottom: 16px;
     }
     span.subtitle {
-      font-size: 1.1vw;
+      font-size: 15px;
     }
   }
   div.footer-phonenum  {
     span {
       display: flex;
       align-items: center;
-      font-size: 1.5vw;
+      font-size: 20px;
       letter-spacing: 1px;
       font-weight: bold;
       img {
-        width: 1.5vw;
+        width: 20px;
         transform: matrix(0.99, 0.16, -0.17, 0.99, 0, 0);
         margin-right: 10px;
       }
@@ -62,13 +62,13 @@ export default {
   div.footer-address  {
     .title {
       display: block;
-      font-size: 2vw;
+      font-size: 30px;
       font-weight: bold;
       margin-bottom: 8px;
     }
     .address {
       display: block;
-      font-size: 1.1vw;
+      font-size: 15px;
     }
   }
 }

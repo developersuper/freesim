@@ -22,7 +22,7 @@ export default {
   color: #ff7777;
   font-family: Roboto;
   font-style: normal;
-  padding-left: 10vw;
+  padding-left: 10.208vw;
   .title {
     display: flex;
     align-items: center;

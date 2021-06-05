@@ -28,7 +28,7 @@ export default {
 
 <style lang="scss" scoped>
 .aboutus {
-  padding: 80px 10vw 0px;
+  padding: 80px 10.208vw 0px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

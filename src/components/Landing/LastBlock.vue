@@ -26,7 +26,7 @@ export default {
 
 <style lang="scss" scoped>
 .lastblock {
-  padding: 120px 10vw;
+  padding: 120px 10.208vw;
   display: flex;
   align-items: center;
   flex-wrap: wrap;

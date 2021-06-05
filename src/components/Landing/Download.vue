@@ -77,7 +77,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding-left: 10vw;
+    padding-left: 10.208vw;
     padding-bottom: 20vh;
     height: calc(100vh - 100px);
     padding-top: 100px;

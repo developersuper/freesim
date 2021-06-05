@@ -7,14 +7,23 @@
       :collapsed="collapsed"
       :width="'196px'" 
       @click="onClickSidebar"
+      @item-click="onClickItem"
     >
       <template v-slot:header>
-        <div v-if="collapsed" class="sidebarheader">
+        <div v-if="collapsed && menutype === 'sidebarmenu'" class="sidebarheader">
           <span>Free Sim</span>
         </div>
-        <div v-if="!collapsed" class="sidebarheader-extended">
+        <div v-if="!collapsed && menutype === 'sidebarmenu'" class="sidebarheader-extended">
           <img :src="user.avatar" alt="">
           <span>{{user.name}}</span>
+        </div>
+        <div v-if="menutype === 'helpmenu'" class="helpmenu-backbtn action" @click="onSidebarMenu">
+          <span class="helpmenu-backbtn-">
+            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 1L2 6.13158L7 11" stroke="white" stroke-width="2"/>
+            </svg>
+          </span>
+          Back
         </div>
       </template>
     </sidebar-menu>
@@ -43,7 +52,7 @@ export default {
   },
   data() {
     return {
-      menu: [
+      sidebarmenu: [
         {
           href: '/download',
           title: 'Download App',
@@ -51,12 +60,12 @@ export default {
             element: 'img',
             class: 'sidebar-icon',
             attributes: {
-              src: require('@/assets/images/icons/download.png')
+              src: require('@/assets/images/icons/download.png'),
             }
           }
         },
         {
-          href: '/download',
+          href: '/phonesandplanes',
           title: 'Phones & Planse',
           icon: {
             element: 'img',
@@ -67,7 +76,7 @@ export default {
           }
         },
         {
-          href: '/download',
+          href: '/settings',
           title: 'Settings',
           icon: {
             element: 'img',
@@ -78,18 +87,18 @@ export default {
           }
         },
         {
-          href: '/download',
           title: 'Help',
           icon: {
             element: 'img',
             class: 'sidebar-icon',
             attributes: {
-              src: require('@/assets/images/icons/question.png')
+              src: require('@/assets/images/icons/question.png'),
+              onclick: this.onHelp,
             }
           }
         },
         {
-          href: '/download',
+          href: '/signin',
           title: 'Sign Out',
           icon: {
             element: 'img',
@@ -105,17 +114,82 @@ export default {
         avatar: require('@/assets/images/user.png'),
         name: 'Kim Jonson',
       },
+      menutype: 'sidebarmenu',
+      helpmenu: [
+        {
+          href: '/download',
+          title: 'Suppor',
+          class: 'helpmenu-item',
+        },
+        {
+          href: '/download',
+          title: 'About',
+          class: 'helpmenu-item',
+        },
+        {
+          href: '/download',
+          title: 'International Rates',
+          class: 'helpmenu-item',
+        },
+        {
+          href: '/download',
+          title: 'Blog',
+          class: 'helpmenu-item',
+        },
+        {
+          href: '/download',
+          title: 'Terms of Use',
+          class: 'helpmenu-item',
+        },
+        {
+          href: '/download',
+          title: 'Privacy & Policy',
+          class: 'helpmenu-item',
+        },
+        {
+          href: '/download',
+          title: '2G Fair Use Policy',
+          class: 'helpmenu-item',
+        },
+        {
+          href: '/download',
+          title: 'Download Debug Logs',
+          class: 'helpmenu-item',
+        },
+      ], 
+      menu: [],
     }
+  },
+  mounted() {
+    this.show = true
+    this.menu = [...this.sidebarmenu]
   },
   methods: {
     onClickSidebar(event) {
       event.stopPropagation();
-      this.collapsed = !this.collapsed;
+      console.log('onclick side a')
+      if(this.menutype === 'helpmenu') return
+      this.collapsed = !this.collapsed
+    },
+    onHelp(event) {
+      event.stopPropagation()
+      this.menu = [...this.helpmenu]
+      this.collapsed = false
+      this.menutype = 'helpmenu'
+    },
+    onSidebarMenu(event) {
+      event.stopPropagation()
+      this.menu = [...this.sidebarmenu]
+      this.menutype = 'sidebarmenu'
+    },
+    onClickItem(event, item) {
+      event.stopPropagation()
+      if(item.title === 'Help') {
+        this.menu = [...this.helpmenu]
+        this.collapsed = false
+        this.menutype = 'helpmenu'
+      }
     }
-  },
-  mounted() {
-    console.log('show after mounted', this.show)
-    this.show = true;
   },
 }
 </script>
@@ -143,6 +217,17 @@ div.main-layout {
       white-space: nowrap;
       line-height: 20px;
       transform: rotate(90deg);
+    }
+  }
+  div.helpmenu-backbtn {
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 21px;
+    margin-left: 21px;
+    margin-top: 28px;
+    span.helpmenu-backbtn-icon {
+      margin-right: 10px;
     }
   }
   div.sidebarheader-extended {
