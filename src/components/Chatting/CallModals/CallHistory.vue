@@ -9,7 +9,7 @@
         <call-history-item :item="history"></call-history-item>
       </template>
     </div>
-    <div class="dial-icon action">
+    <div class="dial-icon action" @click="openDialPad">
       <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="28" cy="28" r="28" fill="#00DE5E"/>
         <circle cx="20.5" cy="19.5" r="3.5" fill="white"/>
@@ -103,6 +103,9 @@ export default {
   methods: {
     handleTab(tab) {
       this.tab = (tab === 'all' ? 'all' : 'missed')
+    },
+    openDialPad() {
+      this.$store.commit('setModal', 'dialpad')
     }
   }
 }

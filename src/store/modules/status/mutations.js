@@ -1,12 +1,12 @@
 
 const mutations = {
-  init(state) {
+  setMode(state, mode) {
     state.activechatter = -1
     state.chatSearch = ''
-  },
-  setMode(state, mode) {
-    this.init()
     state.mode = mode
+    if(mode == 'calls') {
+      state.modal = 'callhistory'
+    }
   },
   setActiveChatter(state, index) {
     state.activechatter = index
@@ -15,6 +15,9 @@ const mutations = {
   setChatSearch(state, text) {
     state.chatSearch = text
   },
+  setModal(state, modal) {
+    state.modal = modal
+  }
 }
 
 export default mutations

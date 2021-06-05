@@ -210,6 +210,7 @@ const state = {
   ],
   activechatter: -1,
   chatSearch: '',
+  modal: '',
 }
 
 export default {

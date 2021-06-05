@@ -4,6 +4,7 @@ const getters = {
   activechatter: (state) => state.activechatter,
   chatSearch: (state) => state.chatSearch,
   messages: (state) => state.chats[state.activechatter]?.messages,
+  modal: (state) => state.modal,
 }
 
 export default getters;

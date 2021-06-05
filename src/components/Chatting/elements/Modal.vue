@@ -1,6 +1,6 @@
 <template>
-  <transition v-if="show" name="modal">
-    <div class="modal-mask" @click="handleInput">
+  <transition v-if="modal !== ''" name="modal">
+    <div class="modal-mask" @click="closeModal">
       <div class="modal-wrapper">
         <div class="modal-container" @click.stop="">
           <slot>body</slot>
@@ -11,23 +11,29 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Modal',
   components: {
   },
   props: {
-    show: Boolean,
+  },
+  computed: {
+    ...mapGetters(['modal']),
   },
   data() {
     return {
     }
   },
   methods: {
-    handleInput() {
-      this.$emit('show', !this.show)
-    }
+    closeModal() {
+      this.$store.commit('setModal', '')
+    },
   },
+  mounted() {
+    console.log(this.modal)
+  }
 }
 </script>
 

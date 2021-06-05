@@ -2,21 +2,21 @@
   <div class="chat-box">
     <chat-box-header />
     <chat-box-msg-box />
-    <chat-box-bottom />
+    <!-- <chat-box-bottom /> -->
   </div>
 </template>
 
 <script>
 import ChatBoxHeader from './ChatBoxHeader'
 import ChatBoxMsgBox from './ChatBoxMsgBox'
-import ChatBoxBottom from './ChatBoxBottom'
+// import ChatBoxBottom from './ChatBoxBottom'
 
 export default {
   name: 'ChatBox',
   components: {
     ChatBoxHeader,
     ChatBoxMsgBox,
-    ChatBoxBottom
+    // ChatBoxBottom
   }
 }
 </script>
