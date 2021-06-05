@@ -27,7 +27,7 @@
 import ContextMenu from './elements/ContextMenu'
 
 export default {
-  name: 'ChatBoxHeadeSettingsBar',
+  name: 'ChatBoxHeaderSettingsBar',
   components: {
     ContextMenu,
   },

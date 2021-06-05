@@ -94,6 +94,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import ContextMenu from './elements/ContextMenu'
 
 export default {
@@ -101,82 +103,11 @@ export default {
   components: {
     ContextMenu,
   },
+  computed: {
+    ...mapGetters(['messages']),
+  },
   data() {
     return {
-      messages: [
-        {
-          type: 'text',
-          text: 'Hi, how are you? Miss you! When will you come?',
-          checked1: true,
-          checked2: true,
-          received: true,
-          time: '12:37',
-          day: 'Yesterday'
-        },
-        {
-          type: 'text',
-          text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
-          checked1: true,
-          checked2: true,
-          received: false,
-          time: '12:37',
-          day: 'Yesterday'
-        },
-        {
-          type: 'voice',
-          duration: '00:37',
-          checked1: true,
-          checked2: true,
-          received: true,
-          time: '12:51',
-          day: 'Yesterday'
-        },
-        {
-          type: 'text',
-          text: 'Then let\'s go together if you succeed!',
-          checked1: true,
-          checked2: true,
-          received: true,
-          time: '12:52',
-          day: 'Today'
-        },
-        {
-          type: 'text',
-          text: 'Hi, how are you? Miss you! When will you come?',
-          checked1: true,
-          checked2: true,
-          received: true,
-          time: '12:37',
-          day: 'Today'
-        },
-        {
-          type: 'text',
-          text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
-          checked1: true,
-          checked2: true,
-          received: false,
-          time: '12:37',
-          day: 'Today'
-        },
-        {
-          type: 'voice',
-          duration: '00:37',
-          checked1: true,
-          checked2: true,
-          received: true,
-          time: '12:51',
-          day: 'Today'
-        },
-        {
-          type: 'text',
-          text: 'Then let\'s go together if you succeed!',
-          checked1: true,
-          checked2: true,
-          received: true,
-          time: '12:52',
-          day: 'Today'
-        },
-      ],
       action: '',
       id: -1,
       selected: new Set(),
@@ -233,6 +164,9 @@ export default {
     selectMsg(id) {
       this.selected.has(id) ? this.selected.delete(id) : this.selected.add(id)
     }
+  },
+  mounted() {
+    console.log(this.messages)
   }
 }
 </script>

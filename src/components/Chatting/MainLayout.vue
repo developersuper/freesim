@@ -37,6 +37,8 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 import { SidebarMenu } from 'vue-sidebar-menu'
 import LeftBox from '@/components/Chatting/LeftBox.vue'
 import ChatBox from '@/components/Chatting/ChatBox.vue'
@@ -49,6 +51,11 @@ export default {
     LeftBox,
     ChatBox,
     Calls,
+  },
+  computed: {
+    ...mapGetters([
+      'user'
+    ])
   },
   data() {
     return {
@@ -110,10 +117,6 @@ export default {
         },
       ],
       collapsed: true,
-      user: {
-        avatar: require('@/assets/images/user.png'),
-        name: 'Kim Jonson',
-      },
       menutype: 'sidebarmenu',
       helpmenu: [
         {
@@ -163,6 +166,7 @@ export default {
   mounted() {
     this.show = true
     this.menu = [...this.sidebarmenu]
+    console.log(this.$store.state)
   },
   methods: {
     onClickSidebar(event) {

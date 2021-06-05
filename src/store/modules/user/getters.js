@@ -1,10 +1,5 @@
 const getters = {
-  getUser: (state) => state.user,
-  getToken: (state) => state.token,
-  isLoggedIn: (state) => {
-    console.log('isLoggineIn called');
-    return state.user && state.token ? true : false;
-   }
+  user: (state) => state.user,
 }
 
 export default getters;

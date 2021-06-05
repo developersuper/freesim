@@ -1,16 +1,17 @@
 <template>
   <div class="left-box">
-      <LeftBar 
+      <left-bar 
         :mode="mode" 
         :voicemail="4" 
-        @onMode="getMode"
+        @onMode="setMode"
       />
-    <SearchBar />
-    <Chats />
+    <search-bar />
+    <chats />
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import LeftBar from './LeftBar'
 import Chats from './Chats'
 import SearchBar from './elements/SearchBar'
@@ -24,12 +25,14 @@ export default {
   },
   data() {
     return {
-      mode: 'chats',
     }
   },
+  computed: {
+    ...mapGetters(['mode'])
+  },
   methods: {
-    getMode(mode) {
-      this.mode = mode;
+    setMode(mode) {
+      this.$store.commit('setMode', mode)
     }
   }
 }

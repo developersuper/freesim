@@ -2,7 +2,7 @@
   <div class="search">
     <div class="search-input">
       <img :src="require('@/assets/images/icons/search.png')" alt="">
-      <input type="text" placeholder="Search" >
+      <input type="text" placeholder="Search" :value="value" @change="setValue">
     </div>
   </div>
 </template>
@@ -11,7 +11,15 @@
 
 export default {
   name: 'App',
+  props: {
+    value: String,
+  },
   components: {
+  },
+  methods: {
+    setValue(e) {
+      this.$emit('value', e.target.value)
+    }
   }
 }
 </script>

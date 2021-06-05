@@ -1,38 +1,51 @@
 <template>
   <div class="chatboxheader">
-    <template v-if="user === null">
+    <template v-if="chatter === null">
       <div class="self-user">
-        <img :src="require('@/assets/images/user.png')" alt="" class="avatar">
+        <img :src="user.avatar" alt="" class="avatar">
         <div class="self-user-info">
-          <span class="title">Kim Jonson</span>
-          <span class="phone-num">(601) 779-978</span>
+          <span class="title">{{user.name}}</span>
+          <span class="phone-num">{{user.phone}}</span>
         </div>
       </div>
     </template>
     <template v-else>
       <div class="client-info">
-        <img :src="require('@/assets/images/user.png')" alt="" class="avatar">
-        <span class="title">Jane Fisher</span>
+        <img :src="chatter.avatar" alt="" class="avatar">
+        <span class="title">{{chatter.name}}</span>
       </div>
-      <SearchBar class="search-bar" />
-      <ChatBoxHeadeSettingsBar class="settings-bar"/>
+      <search-bar class="search-bar" :value="chatSearch" @value="setChatSearch"/>
+      <chat-box-header-settings-bar class="settings-bar"/>
     </template>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import SearchBar from './elements/SearchBar'
-import ChatBoxHeadeSettingsBar from './ChatBoxHeadeSettingsBar'
+import ChatBoxHeaderSettingsBar from './ChatBoxHeaderSettingsBar'
 
 export default {
   name: 'ChatBoxHeader',
   components: {
     SearchBar,
-    ChatBoxHeadeSettingsBar,
+    ChatBoxHeaderSettingsBar,
   },
   data() {
     return {
-      user: 1,
+    }
+  },
+  computed: {
+    chatter() {
+      if(this.$store.getters.activechatter === -1) return null
+      return this.$store.getters.chats[this.$store.getters.activechatter]
+    },
+    ...mapGetters(['user', 'chatSearch']),
+  },
+  methods: {
+    setChatSearch(value) {
+      this.$store.commit('setChatSearch', value)
     }
   }
 }

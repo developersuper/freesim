@@ -1,35 +1,35 @@
 <template>
   <div class="chats">
     <template v-for="(chat, index) in chats" :key="index">
-      <div class="chat action">
+      <div class="chat action" @click="setActiveChatter(index)">
         <div class="left">
           <img :src="chat.avatar" alt="">
           <div class="nameandmessage">
             <span class="name">
               {{chat.name}}
-              <span v-if="chat.message.status === 'unread'" class="readstatus"></span>
+              <span v-if="chat.messages[0].status === 'unread'" class="readstatus"></span>
             </span>
-            <span class="message" :style="{color: chat.message.status === 'unread' ? '#333333' : '#8A8A8A'}">
-              {{chat.message.text}}
+            <span class="message" :style="{color: chat.messages[0].status === 'unread' ? '#333333' : '#8A8A8A'}">
+              {{chat.messages[0].text}}
             </span>
         </div>
         </div>
         <div class="status">
           <span class="top">
-            <span v-if="chat.message.check1" class="check1">
+            <span v-if="chat.messages[0].check1" class="check1">
               <svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9.6875 0H9.1875L2.625 5.20312L0.443158 3.92188H0L2.625 8.1875L9.6875 0Z" fill="#05FF00"/>
               </svg>
             </span>
-            <span v-if="chat.message.check2" class="check2">
+            <span v-if="chat.messages[0].check2" class="check2">
               <svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9.6875 0H9.1875L2.625 5.20312L0.443158 3.92188H0L2.625 8.1875L9.6875 0Z" fill="#05FF00"/>
               </svg>
             </span>
-            <span class="time">{{chat.message.time}}</span>
+            <span class="time">{{chat.messages[0].time}}</span>
           </span>
-          <span v-if="chat.message.day !== 'Today'" class="bottom">
-            {{chat.message.day}}
+          <span v-if="chat.messages[0].day !== 'Today'" class="bottom">
+            {{chat.messages[0].day}}
           </span>
         </div>
       </div>
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Chats',
@@ -45,132 +46,18 @@ export default {
   },
   data() {
     return {
-      chats: [
-        {
-          name: 'Jane Fisher',
-          avatar: require('@/assets/images/user.png'),
-          message: {
-            text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
-            status: 'read',
-            check1: false,
-            check2: false,
-            time: '22.06',
-            day: 'Today'
-          }
-        },
-        {
-          name: 'Adam Brogy',
-          avatar: require('@/assets/images/avatars/adam.png'),
-          message: {
-            text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
-            status: 'read',
-            check1: false,
-            check2: true,
-            time: '01.12',
-            day: 'Today'
-          }
-        },
-        {
-          name: 'Luisa Simpson',
-          avatar: require('@/assets/images/avatars/luisa.png'),
-          message: {
-            text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
-            status: 'read',
-            check1: false,
-            check2: true,
-            time: '22.06',
-            day: 'Today'
-          }
-        },
-        {
-          name: 'Martin Davids',
-          avatar: require('@/assets/images/avatars/martin.png'),
-          message: {
-            text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
-            status: 'read',
-            check1: true,
-            check2: true,
-            time: '22.06',
-            day: 'Yesterday'
-          }
-        },
-        {
-          name: 'Stive Amstrong',
-          avatar: require('@/assets/images/avatars/stive.png'),
-          message: {
-            text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
-            status: 'read',
-            check1: false,
-            check2: true,
-            time: '22.06',
-            day: 'Yesterday'
-          }
-        },
-        {
-          name: 'Jane Fisher',
-          avatar: require('@/assets/images/user.png'),
-          message: {
-            text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
-            status: 'read',
-            check1: false,
-            check2: false,
-            time: '22.06',
-            day: 'Today'
-          }
-        },
-        {
-          name: 'Adam Brogy',
-          avatar: require('@/assets/images/avatars/adam.png'),
-          message: {
-            text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
-            status: 'read',
-            check1: false,
-            check2: true,
-            time: '01.12',
-            day: 'Today'
-          }
-        },
-        {
-          name: 'Luisa Simpson',
-          avatar: require('@/assets/images/avatars/luisa.png'),
-          message: {
-            text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
-            status: 'read',
-            check1: false,
-            check2: true,
-            time: '22.06',
-            day: 'Today'
-          }
-        },
-        {
-          name: 'Martin Davids',
-          avatar: require('@/assets/images/avatars/martin.png'),
-          message: {
-            text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
-            status: 'read',
-            check1: true,
-            check2: true,
-            time: '22.06',
-            day: 'Yesterday'
-          }
-        },
-        {
-          name: 'Stive Amstrong',
-          avatar: require('@/assets/images/avatars/stive.png'),
-          message: {
-            text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
-            status: 'read',
-            check1: false,
-            check2: true,
-            time: '22.06',
-            day: 'Yesterday'
-          }
-        },
-      ],
+    }
+  },
+  computed: {
+    ...mapGetters(['chats']),
+  },
+  methods: {
+    setActiveChatter(index) {
+      this.$store.commit('setActiveChatter', index)
     }
   },
   mounted() {
-    console.log(require('@/assets/images/user.png'))
+    console.log('chats.vue >>', this.chats)
   }
 }
 </script>
