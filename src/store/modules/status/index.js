@@ -208,9 +208,68 @@ const state = {
       }]
     },
   ],
+  callHistories: [
+    {
+      type: 'Incoming',
+      name: 'Jane Fisher',
+      avatar: require('@/assets/images/user.png'),
+      duration: '32 sec',
+      time: '12:37',
+      day: 'Today'
+    },
+    {
+      type: 'Incoming',
+      name: 'Jane Fisher',
+      avatar: require('@/assets/images/user.png'),
+      duration: '32 sec',
+      time: '12:37',
+      day: 'Today'
+    },
+    {
+      type: 'Outgoing',
+      name: 'Jane Fisher',
+      avatar: require('@/assets/images/user.png'),
+      duration: '56 sec',
+      time: '12:37',
+      day: 'Today'
+    },
+    {
+      type: 'Missed',
+      name: 'Jane Fisher',
+      avatar: require('@/assets/images/user.png'),
+      duration: '2 min',
+      time: '12:37',
+      day: 'Today'
+    },
+    {
+      type: 'Incoming',
+      name: 'Jane Fisher',
+      avatar: require('@/assets/images/user.png'),
+      duration: '32 sec',
+      time: '12:37',
+      day: 'Today'
+    },
+    {
+      type: 'Outgoing',
+      name: 'Jane Fisher',
+      avatar: require('@/assets/images/user.png'),
+      duration: '56 sec',
+      time: '12:37',
+      day: 'Today'
+    },
+    {
+      type: 'Missed',
+      name: 'Jane Fisher',
+      avatar: require('@/assets/images/user.png'),
+      duration: '2 min',
+      time: '12:37',
+      day: 'Today'
+    },
+  ],
   activechatter: -1,
   chatSearch: '',
-  modal: '',
+  modal: 'videocall',
+  
 }
 
 export default {

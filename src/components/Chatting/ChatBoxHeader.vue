@@ -17,6 +17,9 @@
       <search-bar class="search-bar" :value="chatSearch" @value="setChatSearch"/>
       <chat-box-header-settings-bar class="settings-bar"/>
     </template>
+    <span class="back-btn action">
+      Back
+    </span>
   </div>
 </template>
 
@@ -96,13 +99,14 @@ div.chatboxheader {
 @media screen and (max-width: 900px) {
   div.chatboxheader {
     flex-wrap: wrap;
+    height: 111px;
     padding-top: 14px;
     padding-bottom: 0;
+    position: relative;
     div.client-info {
       width: 100%;
     }
     .search-bar {
-      order: 2;
       max-width: 140px;
       width: 100%;
       margin-left: 24px;
@@ -110,8 +114,12 @@ div.chatboxheader {
       justify-content: flex-start !important;
     }
     .settings-bar {
-      order: 3;
       margin-left: 5px;
+    }
+  }
+  @media only screen and (max-width: 733px) {
+    div.self-user {
+      margin-left: 10px !important;
     }
   }
 }

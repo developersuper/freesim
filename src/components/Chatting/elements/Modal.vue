@@ -2,7 +2,10 @@
   <transition v-if="modal !== ''" name="modal">
     <div class="modal-mask" @click="closeModal">
       <div class="modal-wrapper">
-        <div class="modal-container" @click.stop="">
+        <div 
+          :class="modal === 'videocall' ? {'modal-container modal-videocall': true} : {'modal-container': true}" 
+          @click.stop=""
+        >
           <slot>body</slot>
         </div>
       </div>
@@ -66,5 +69,10 @@ export default {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
   font-family: Helvetica, Arial, sans-serif;
+}
+.modal-videocall {
+  min-height: unset;
+  height: 100vh;
+  max-width: unset;
 }
 </style>

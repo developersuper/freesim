@@ -252,3 +252,14 @@ ul.contextmenu {
 /* Show the dropdown menu on hover */
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
+span.back-btn {
+  position: absolute; 
+  display: none;
+}
+@media screen and (max-width: 733px) {
+  span.back-btn {
+    display: block;  
+    font-weight: bold;
+    right: 10px
+  }
+}

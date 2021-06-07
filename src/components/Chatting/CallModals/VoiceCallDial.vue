@@ -18,7 +18,7 @@
       </span>
     </div>
     <div class="dial-body">
-      <template v-if="mode === 'dialpad'" >
+      <template v-if="modal === 'dialpad'" >
         <div class="number-input" autofocus>
           <input type="text" v-model="dial">
           <span class="plus-icon action">
@@ -93,13 +93,13 @@
             <span class="title" :style="{color: record ? '#F2F0F0' : '#A2A2A2'}">Record</span>
           </span>
         </div>
-        <span class="call-start-btn action">
+        <span class="call-start-btn action" @click="startCall">
           <svg width="22" height="30" viewBox="0 0 22 30" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9.18561 15.9918C7.36422 12.9193 5.74708 9.48536 7.15448 8.65047C9.16755 7.45629 10.8182 6.82352 8.87773 2.55924C6.93842 -1.7031 4.3488 0.529872 2.3994 1.6876C0.147562 3.02342 0.138254 10.1436 5.05853 18.4401C9.98075 26.7354 16.2351 30.136 18.4873 28.7986C20.4398 27.6417 23.637 26.4484 20.8261 22.7031C18.0155 18.9563 16.6693 20.1 14.6539 21.2969C13.2477 22.1271 11.0089 19.0633 9.18561 15.9918Z" fill="white"/>
           </svg>
         </span>
       </template>
-      <template v-if="mode === 'voicecalling'" >
+      <template v-if="modal === 'voicecalling'" >
         <div class="client-avatar">
           <img :src="require('@/assets/images/callavatar.png')" alt="">
         </div>
@@ -150,7 +150,7 @@
             </span>
             <span class="title" :style="{color: mute ? '#F2F0F0' : '#A2A2A2'}">Mute</span>
           </span>
-          <span class="icon-btn"  @click="video = !video">
+          <span class="icon-btn" @click="setVideoCall">
             <span class="icon">
               <svg width="25" height="16" viewBox="0 0 25 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M0 3.125C0 2.2962 0.32924 1.50134 0.915291 0.915291C1.50134 0.32924 2.2962 2.16425e-08 3.125 2.16425e-08H14.8438C15.6017 -8.91375e-05 16.3339 0.275301 16.9039 0.774887C17.4739 1.27447 17.8429 1.9642 17.9422 2.71562L22.8016 0.55625C23.0394 0.450268 23.3 0.405412 23.5596 0.425759C23.8192 0.446105 24.0696 0.531009 24.288 0.672754C24.5065 0.814498 24.686 1.00859 24.8104 1.23738C24.9347 1.46617 24.9999 1.72241 25 1.98281V13.6422C24.9998 13.9024 24.9346 14.1584 24.8103 14.387C24.6861 14.6156 24.5067 14.8096 24.2885 14.9513C24.0702 15.093 23.8201 15.1779 23.5607 15.1985C23.3013 15.219 23.0409 15.1744 22.8031 15.0688L17.9422 12.9094C17.8429 13.6608 17.4739 14.3505 16.9039 14.8501C16.3339 15.3497 15.6017 15.6251 14.8438 15.625H3.125C2.2962 15.625 1.50134 15.2958 0.915291 14.7097C0.32924 14.1237 0 13.3288 0 12.5V3.125ZM17.9688 11.2109L23.4375 13.6422V1.98281L17.9688 4.41406V11.2109ZM3.125 1.5625C2.7106 1.5625 2.31317 1.72712 2.02015 2.02015C1.72712 2.31317 1.5625 2.7106 1.5625 3.125V12.5C1.5625 12.9144 1.72712 13.3118 2.02015 13.6049C2.31317 13.8979 2.7106 14.0625 3.125 14.0625H14.8438C15.2582 14.0625 15.6556 13.8979 15.9486 13.6049C16.2416 13.3118 16.4062 12.9144 16.4062 12.5V3.125C16.4062 2.7106 16.2416 2.31317 15.9486 2.02015C15.6556 1.72712 15.2582 1.5625 14.8438 1.5625H3.125Z" :fill="video ? '#F2F0F0' : '#A2A2A2'"/>
@@ -168,7 +168,7 @@
             <span class="title" :style="{color: pause ? '#F2F0F0' : '#A2A2A2'}">Pause</span>
           </span>
         </div>
-        <span class="call-end-btn action">
+        <span class="call-end-btn action" @click="endCall">
           <svg width="33" height="13" viewBox="0 0 33 13" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M16.5706 5.79713C20.1425 5.79826 23.9209 6.15939 23.9209 7.7958C23.9209 10.1364 23.6229 11.8789 28.2805 12.3856C32.9358 12.8924 32.3365 9.52587 32.3354 7.25861C32.3354 4.64036 26.2163 0.999645 16.5706 0.998515C6.92484 0.999645 0.8092 4.64374 0.810328 7.26312C0.809199 9.53264 0.204296 12.8912 4.85958 12.3845C9.516 11.8789 9.21919 10.1375 9.21806 7.79354C9.22145 6.16052 12.9987 5.79826 16.5706 5.79713Z" fill="white"/>
           </svg>
@@ -179,11 +179,14 @@
 </template>
 
 <script>
-
+import {mapGetters} from 'vuex' 
 export default {
   name: 'VoiceCallDial',
   components: {
 
+  },
+  computed: {
+    ...mapGetters(['modal'])
   },
   data() {
     return {
@@ -201,6 +204,19 @@ export default {
     onClickDial(dial) {
       this.dial += dial;
     },
+    endCall() {
+      this.$store.dispatch('setModal', '')
+    },
+    startCall() {
+      if(!this.video){
+        this.$store.dispatch('setModal', 'voicecalling')
+      }else {
+        this.$store.dispatch('setModal', 'videocall')
+      }
+    },
+    setVideoCall() {
+      this.$store.dispatch('setModal', 'videocall')
+    }
   }
 }
 </script>

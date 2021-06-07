@@ -253,10 +253,18 @@ div.main-layout {
   div.main-box {
     width: 100%;
     display: flex;
+    // flex-wrap: wrap;
   }
   div.adv-box {
     max-width: 286px;
     width: 100%;
   }
+}
+@media screen and (max-width: 733px) {
+ div.main-layout {
+   div.main-box {
+     flex-wrap: wrap;
+   }
+ } 
 }
 </style>

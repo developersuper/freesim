@@ -1,7 +1,7 @@
 <template>
   <div class="chats">
     <template v-for="(chat, index) in chats" :key="index">
-      <div class="chat action" @click="setActiveChatter(index)">
+      <div v-if="mode === 'chats'" class="chat action" @click="setActiveChatter(index)">
         <div class="left">
           <img :src="chat.avatar" alt="">
           <div class="nameandmessage">
@@ -34,22 +34,27 @@
         </div>
       </div>
     </template>
+    <template v-for="(history, index) in callHistories" :key="index">
+      <call-history-item v-if="mode === 'voicemail'" :item="history"></call-history-item>
+    </template>
+
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-
+import CallHistoryItem from './CallHistoryItem'
 export default {
   name: 'Chats',
   components: {
+    CallHistoryItem,
   },
   data() {
     return {
     }
   },
   computed: {
-    ...mapGetters(['chats']),
+    ...mapGetters(['chats', 'mode', 'callHistories']),
   },
   methods: {
     setActiveChatter(index) {
