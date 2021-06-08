@@ -7,6 +7,9 @@ const mutations = {
     if(mode == 'calls') {
       state.modal = 'callhistory'
     }
+    if(mode === 'contacts') {
+      state.modal = 'contacts'
+    }
   },
   setActiveChatter(state, index) {
     state.activechatter = index

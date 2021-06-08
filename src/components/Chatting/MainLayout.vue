@@ -1,5 +1,5 @@
 <template>
-  <calls></calls>
+  <modals></modals>
   <div class="main-layout" @contextmenu.prevent="">
     <sidebar-menu 
       :menu="menu" 
@@ -42,7 +42,7 @@ import {mapGetters} from 'vuex'
 import { SidebarMenu } from 'vue-sidebar-menu'
 import LeftBox from '@/components/Chatting/LeftBox.vue'
 import ChatBox from '@/components/Chatting/ChatBox.vue'
-import Calls from '@/components/Chatting/Calls.vue'
+import Modals from '@/components/Chatting/Modals.vue'
 
 export default {
   name: 'MainLayout',
@@ -50,7 +50,7 @@ export default {
     SidebarMenu,
     LeftBox,
     ChatBox,
-    Calls,
+    Modals,
   },
   computed: {
     ...mapGetters([

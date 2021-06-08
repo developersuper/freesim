@@ -5,7 +5,7 @@
       <span :class="tab === 'missed' ? {'active action': true} : {'action': true}" @click="handleTab('missed')">Missed</span>
     </div>
     <div class="tab-body">
-      <template v-for="(history, index) in (tab === 'all' ? histories : histories.filter(item => item.type === 'Missed'))" :key="index">
+      <template v-for="(history, index) in (tab === 'all' ? callHistories : callHistories.filter(item => item.type === 'Missed'))" :key="index">
         <call-history-item :item="history"></call-history-item>
       </template>
     </div>
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 import CallHistoryItem from '../CallHistoryItem'
 
 export default {
@@ -37,66 +38,11 @@ export default {
   components: {
     CallHistoryItem,
   },
+  computed: {
+    ...mapGetters(['callHistories'])
+  },
   data() {
     return {
-      histories: [
-        {
-          type: 'Incoming',
-          name: 'Jane Fisher',
-          avatar: require('@/assets/images/user.png'),
-          duration: '32 sec',
-          time: '12:37',
-          day: 'Today'
-        },
-        {
-          type: 'Incoming',
-          name: 'Jane Fisher',
-          avatar: require('@/assets/images/user.png'),
-          duration: '32 sec',
-          time: '12:37',
-          day: 'Today'
-        },
-        {
-          type: 'Outgoing',
-          name: 'Jane Fisher',
-          avatar: require('@/assets/images/user.png'),
-          duration: '56 sec',
-          time: '12:37',
-          day: 'Today'
-        },
-        {
-          type: 'Missed',
-          name: 'Jane Fisher',
-          avatar: require('@/assets/images/user.png'),
-          duration: '2 min',
-          time: '12:37',
-          day: 'Today'
-        },
-        {
-          type: 'Incoming',
-          name: 'Jane Fisher',
-          avatar: require('@/assets/images/user.png'),
-          duration: '32 sec',
-          time: '12:37',
-          day: 'Today'
-        },
-        {
-          type: 'Outgoing',
-          name: 'Jane Fisher',
-          avatar: require('@/assets/images/user.png'),
-          duration: '56 sec',
-          time: '12:37',
-          day: 'Today'
-        },
-        {
-          type: 'Missed',
-          name: 'Jane Fisher',
-          avatar: require('@/assets/images/user.png'),
-          duration: '2 min',
-          time: '12:37',
-          day: 'Today'
-        },
-      ],
       tab: 'all',
     }
   },

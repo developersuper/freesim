@@ -1,7 +1,7 @@
 <template>
   <div class="chats">
     <template v-for="(chat, index) in chats" :key="index">
-      <div v-if="mode === 'chats'" class="chat action" @click="setActiveChatter(index)">
+      <div v-if="mode === 'chats'" class="chat menuhover" @click="setActiveChatter(index)">
         <div class="left">
           <img :src="chat.avatar" alt="">
           <div class="nameandmessage">

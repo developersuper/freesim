@@ -268,8 +268,63 @@ const state = {
   ],
   activechatter: -1,
   chatSearch: '',
-  modal: 'videocall',
-  
+  modal: '',
+  contacts: [
+    {
+      name: 'Jane Fisher',
+      fav: true,
+      avatar: require('@/assets/images/user.png'),
+      lastView: 'online'
+    },
+    {
+      name: 'Jane Fisher',
+      fav: true,
+      avatar: require('@/assets/images/user.png'),
+      lastView: 'online'
+    },
+    {
+      name: 'Jane Fisher',
+      fav: false,
+      avatar: require('@/assets/images/user.png'),
+      lastView: 'online'
+    },
+    {
+      name: 'Adam Brogy',
+      fav: false,
+      avatar: require('@/assets/images/user.png'),
+      lastView: 'online'
+    },
+    {
+      name: 'Martin Davids',
+      fav: false,
+      avatar: require('@/assets/images/user.png'),
+      lastView: 'was 22:11'
+    },
+    {
+      name: 'Stiv Amstrong',
+      fav: false,
+      avatar: require('@/assets/images/user.png'),
+      lastView: 'was 18:22'
+    },
+    {
+      name: 'Jim Tomason',
+      fav: false,
+      avatar: require('@/assets/images/user.png'),
+      lastView: 'was 18:20'
+    },
+    {
+      name: 'Linda Gamson',
+      fav: false,
+      avatar: require('@/assets/images/user.png'),
+      lastView: 'was 17:33'
+    },
+    {
+      name: 'Lee Chau',
+      fav: false,
+      avatar: require('@/assets/images/user.png'),
+      lastView: 'was 16:17'
+    },
+  ],
 }
 
 export default {

@@ -37,6 +37,15 @@
         </svg>
       </span>
     </div>
+    <div class="timeconor">
+      <span class="text">Tim Conor</span>
+      <span class="duration">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="6.5" cy="6.5" r="6.5" fill="#FE3030"/>
+        </svg>
+         <span>03:47</span>
+      </span>
+    </div>
   </div>
 </template>
 
@@ -118,6 +127,28 @@ div.videocall {
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+  }
+  div.timeconor {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 35px;
+    left: 35px;
+    span.text {
+      font-weight: 500;
+      font-size: 25px;
+      color: #FFFFFF;
+      margin-bottom: 5px;
+    }
+    span.duration {
+      font-size: 17px;
+      color: #CFCFCF;
+      display: flex;
+      align-items: center;
+      svg {
+        margin-right: 10px;
+      }
     }
   }
 }
