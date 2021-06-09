@@ -51,7 +51,7 @@ export default {
 
 <style lang="scss" scoped>
 .choice {
-  padding: 80px 10.208vw 100px; 
+  padding: 80px 135px 100px; 
   h1.title {
     color: #515151;
     font-weight: bold;
@@ -127,7 +127,7 @@ export default {
         color: #000000;
         margin: 0;
         margin-bottom: 30px;
-        max-width: 231px;
+        max-width: 233px;
         width: 100%;
       }
       .card-subtitle {
@@ -147,6 +147,11 @@ export default {
         margin: auto;
       }
     }
+  }
+}
+@media screen and (max-width: 1000px) {
+  .choice {
+    padding: 80px 10.208vw 100px;
   }
 }
 </style>
