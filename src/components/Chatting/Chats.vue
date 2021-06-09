@@ -71,7 +71,7 @@ div.chats {
   width: 100%;
   display: flex;
   flex-direction: column;
-  max-height: calc(100vh - 115px);
+  max-height: calc(100vh - 170px);
   overflow-y: auto;
   border-top: 1px solid #C1C1C1;
   div.chat {

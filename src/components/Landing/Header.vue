@@ -22,7 +22,7 @@ export default {
   color: #ff7777;
   font-family: Roboto;
   font-style: normal;
-  padding-left: 10.208vw;
+  padding-left: 135px;
   .title {
     display: flex;
     align-items: center;
@@ -36,6 +36,11 @@ export default {
       font-size: 14px;
       line-height: 16px;
     }
+  }
+}
+@media screen and (max-width: 1000px) {
+  .header {
+    padding-left: 10.208vw;
   }
 }
 </style>

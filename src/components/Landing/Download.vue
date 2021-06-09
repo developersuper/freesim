@@ -66,7 +66,7 @@ export default {
 <style lang="scss">
 .carousel {
   position: relative;
-  height: calc(100vh - 100px);
+  // height: calc(100vh - 100px);
 }
 .download {
   width: 100%;
@@ -77,18 +77,18 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding-left: 10.208vw;
-    padding-bottom: 20vh;
-    height: calc(100vh - 100px);
-    padding-top: 100px;
+    padding: 234px 135px 200px 135px;
+    // height: calc(100vh - 100px);
     text-align: left;
+    height: 924px;
     .title {
       width: 100%;
-      font-weight: bold;
-      font-size: 4vw;
-      line-height: 99.69%;    
+      width: 100%;
+      font-weight: 700;
+      font-size: 70px;  
+      line-height: 100%;
       margin: 0;
-      margin-bottom: 3.5vw;
+      margin-bottom: 50px;
     }
     @media screen and (max-width: 1000px) {
       .title {
@@ -97,11 +97,11 @@ export default {
       }
     }
     .subtitle {
-      font-weight: bold;
-      font-size: 1.7vw;
-      line-height: 99.69%;
+      font-weight: 500;
+      font-size: 25px;
+      line-height: 100%;
       margin: 0;
-      margin-bottom: 4vw;
+      margin-bottom: 50px;
     }
     @media screen and (max-width: 1000px) {
       .subtitle {
@@ -111,18 +111,18 @@ export default {
     }
     .download-btn {
       color: white;
-      height: 4vw;
-      max-width: 16.7vw;
+      height: 60px;
+      max-width: 240px;
       width: 100%;
       background: rgba(1, 213, 90);
       border-radius: 30px;
       text-decoration: none;
-      font-size: 1.5vw; 
+      font-size: 22px; 
       font-weight: bold;
       line-height: 99.69%;
       white-space: nowrap;
       display: flex;
-      padding: 1.3vw 3.2vw;
+      padding: 19px 46px;
       justify-content: center;
       align-items: center;
     }
@@ -135,22 +135,30 @@ export default {
       }
     }
   }
+  @media screen and (max-width: 1000px) {
+    .download-inner {
+      height: calc(100vh - 100px);
+      padding-bottom: 20vw;
+      padding-left: 10.208vw;
+      padding-right: 10vw;
+    }
+  }
 }
 .carousel__pagination {
   display: flex;
   position: absolute;
-  bottom: 3.5vw;
-  right: 10vw;
+  bottom: 54px;
+  right: 133px;
   padding: 0;
-  width: 13vw;
+  width: 172px;
   justify-content: space-between;
   li button.carousel__pagination-button--active  {
     background-color: #ff7777 !important;
   }
   li button{
     outline: none;
-    width: 2vw;
-    height: 2vw;
+    width: 28px;
+    height: 28px;
     border: 0.2vw solid #ff7777;
     border-radius: 100px;
     background: none;
@@ -159,6 +167,10 @@ export default {
 @media screen and (max-width: 865px) {
   .carousel__pagination {
     width: 127px;
+    bottom: 3.5vw;
+    right: 80px;
+    padding: 0;
+    width: 13vw;
     li button{
       width: 19px;
       height: 19px;

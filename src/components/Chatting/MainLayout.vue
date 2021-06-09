@@ -202,7 +202,7 @@ export default {
 div.main-layout {
   position: relative;
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 55px);
   padding-left: 70px;
   // padding-right: 286px;
   div.sidebarheader {

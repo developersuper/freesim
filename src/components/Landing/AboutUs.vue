@@ -7,7 +7,7 @@
       <div class="right-inner">
         <h1 class="title">About Us</h1>
         <p class="subtitle">
-          We believe is using innovative technology<br>to make calling and texting freely<br>accessible by everyone<br>in the world.
+          We believe in using innovative technology<br>to make calling and texting freely<br>accessible by everyone<br>in the world.
         </p>
       </div>
     </div>
