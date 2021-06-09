@@ -6,6 +6,8 @@ import Landing from '@/pages/Landing.vue'
 import Chatting from '@/pages/Chatting.vue'
 import Settings from '@/pages/Settings.vue'
 import PhonesAndPlanes from '@/pages/PhonesAndPlanes.vue'
+import Forgot from '@/pages/Forgot.vue'
+import Logout from '@/pages/Logout.vue'
 
 const routes = [
   {
@@ -41,7 +43,17 @@ const routes = [
     path: "/phonesandplanes",
     name: "PhonesAndPlanes",
     component: PhonesAndPlanes
-  }
+  },
+  {
+    path: "/forgot",
+    name: "Forgot",
+    component: Forgot,
+  },
+  {
+    path: "/logout",
+    name: "Logout",
+    component: Logout,
+  },
 ];
 
 const router = createRouter({

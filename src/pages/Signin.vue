@@ -17,7 +17,7 @@
           <span class="placeholder" :style="passStatus === 'required' ? {color: '#FF7777'} : {}">
             Password
           </span>
-          <span class="forgot action" >
+          <span class="forgot action" @click="goForgot">
             Forgot?
           </span>
           <span v-if="passStatus === 'required'" class="error">Password is required</span>
@@ -95,6 +95,11 @@ export default {
       }
     }
   },
+  methods: {
+    goForgot() {
+      this.$router.push('/forgot')
+    }
+  }
 }
 </script>
 
