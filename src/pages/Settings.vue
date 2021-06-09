@@ -104,7 +104,7 @@
             <div v-if="selected==='Messaging'" class="messaging">
               <span class="settings-body-title">Messaging</span>
               <div class="text-input">
-                <input type="text" placeholder="Add to signature  to your messaging" style="padding-bottom: 16px;">
+                <input type="text" placeholder="Add signature to your messaging" style="padding-bottom: 16px;">
               </div>
               <div class="messaging-btn-wrapper">
                 <span class="messaging-btn action">Save</span>

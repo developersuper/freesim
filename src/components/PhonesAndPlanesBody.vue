@@ -1,8 +1,8 @@
 <template>
  <div class="phonesandplanesbody">
    <div class="phonesandplanesbody-left">
-     <span class="title">Never pay for phone service <span>AGEINE</span></span>
-     <span class="subtitle">Buy a sim activation Kit from Free SIM<br>and get free nationwide<br>Talk &Text</span>
+     <span class="title">Never pay for phone service <span>AGAIN</span></span>
+     <span class="subtitle">Buy a sim activation Kit from Free SIM<br>and get free nationwide<br>Talk & Text</span>
      <span class="button action">Get activation Kit</span>
    </div>
    <div class="img">
@@ -22,8 +22,7 @@ export default {
 
 <style lang="scss" scoped>
 div.phonesandplanesbody {
-  padding: 0 10.208vw;
-  height: calc(100vh - 230px);
+  padding: 171px 135px;
   display: flex;
   justify-content: space-between;
   align-items: center;
