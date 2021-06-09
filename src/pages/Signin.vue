@@ -26,7 +26,11 @@
           <label class="container">Remember me
             <input type="checkbox" v-model="rememberMe">
             <span class="checkmark"></span>
-            <img class="checkmark-icon" :src="require('@/assets/images/icons/checkbox.png')" alt="">
+            <span class="checkmark-icon">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.6562 0L3.9375 9.58594L1.40625 7.66406H0L3.9375 14.0625L14.0625 0H12.6562Z" fill="white"/>
+              </svg>
+            </span>
           </label>
         </div>
       </div>
