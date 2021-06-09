@@ -215,7 +215,9 @@ const state = {
       avatar: require('@/assets/images/user.png'),
       duration: '32 sec',
       time: '12:37',
-      day: 'Today'
+      missedtime: 59,
+      day: 'Today',
+      
     },
     {
       type: 'Incoming',
@@ -223,6 +225,7 @@ const state = {
       avatar: require('@/assets/images/user.png'),
       duration: '32 sec',
       time: '12:37',
+      missedtime: 31,
       day: 'Today'
     },
     {
@@ -277,20 +280,8 @@ const state = {
       lastView: 'online'
     },
     {
-      name: 'Jane Fisher',
-      fav: true,
-      avatar: require('@/assets/images/user.png'),
-      lastView: 'online'
-    },
-    {
-      name: 'Jane Fisher',
-      fav: false,
-      avatar: require('@/assets/images/user.png'),
-      lastView: 'online'
-    },
-    {
       name: 'Adam Brogy',
-      fav: false,
+      fav: true,
       avatar: require('@/assets/images/user.png'),
       lastView: 'online'
     },
@@ -325,6 +316,8 @@ const state = {
       lastView: 'was 16:17'
     },
   ],
+  viewport: 'desktop',
+  window: 'rightbox',
 }
 
 export default {

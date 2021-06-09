@@ -7,6 +7,8 @@ const getters = {
   modal: (state) => state.modal,
   callHistories: (state) => state.callHistories,
   contacts: (state) => state.contacts,
+  viewport: (state) => state.viewport,
+  window: (state) => state.window,
 }
 
 export default getters;

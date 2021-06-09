@@ -20,6 +20,14 @@ const mutations = {
   },
   setModal(state, modal) {
     state.modal = modal
+  },
+  setViewport(state, viewport) {
+    if(state.viewport === viewport) return
+    state.viewport = viewport
+    state.window = 'rightbox'
+  },
+  setWindow(state, window) {
+    state.window = window
   }
 }
 

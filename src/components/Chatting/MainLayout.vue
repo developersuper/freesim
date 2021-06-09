@@ -28,8 +28,8 @@
       </template>
     </sidebar-menu>
     <div class="main-box">
-      <left-box />
-      <chat-box />
+      <left-box v-if="viewport === 'desktop' || (viewport === 'mobile' && window === 'leftbox')" />
+      <chat-box v-if="viewport === 'desktop' || (viewport === 'mobile' && window === 'rightbox')"/>
     </div>
     <div class="adv-box">
     </div>
@@ -54,7 +54,9 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'user'
+      'user',
+      'viewport',
+      'window',
     ])
   },
   data() {

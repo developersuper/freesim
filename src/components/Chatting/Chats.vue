@@ -35,7 +35,7 @@
       </div>
     </template>
     <template v-for="(history, index) in callHistories" :key="index">
-      <call-history-item v-if="mode === 'voicemail'" :item="history"></call-history-item>
+      <call-history-item v-if="mode === 'voicemail'" :item="history" @click="setActiveChatter(index)"></call-history-item>
     </template>
 
   </div>
@@ -59,6 +59,7 @@ export default {
   methods: {
     setActiveChatter(index) {
       this.$store.commit('setActiveChatter', index)
+      this.$store.commit('setWindow', 'rightbox')
     }
   },
   mounted() {

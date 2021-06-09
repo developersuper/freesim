@@ -41,7 +41,6 @@ export default {
 <style lang="scss" scoped>
   div.left-box {
     max-width: 375px;
-    min-width: 320px;
     width: 100%;
     border-top: 1px solid #C1C1C1;
     border-right: 1px solid #C1C1C1;
@@ -50,5 +49,8 @@ export default {
     div.left-box {
       max-width: unset;
     }
+  }
+  @media screen and (max-width) {
+    
   }
 </style>

@@ -23,7 +23,6 @@ export default {
 
 <style lang="scss" scoped>
 div.chat-box {
-  min-width:320px;
   width: 100%;
   border-top: 1px solid #C1C1C1;
   border-right: 1px solid #C1C1C1;

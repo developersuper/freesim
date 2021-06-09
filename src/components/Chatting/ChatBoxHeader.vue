@@ -17,7 +17,7 @@
       <search-bar class="search-bar" :value="chatSearch" @value="setChatSearch"/>
       <chat-box-header-settings-bar class="settings-bar"/>
     </template>
-    <span class="back-btn action">
+    <span class="back-btn action" @click="goLeft">
       Back
     </span>
   </div>
@@ -49,6 +49,9 @@ export default {
   methods: {
     setChatSearch(value) {
       this.$store.commit('setChatSearch', value)
+    },
+    goLeft() {
+      this.$store.commit('setWindow', 'leftbox')
     }
   }
 }

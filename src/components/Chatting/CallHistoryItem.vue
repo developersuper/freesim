@@ -39,8 +39,14 @@
         <span class="top">
           <span class="time">{{item?.time}}</span>
         </span>
-        <span v-if="item?.day !== 'Today'" class="bottom">
+        <!-- <span v-if="item?.day !== 'Today'" class="bottom">
           {{item?.day}}
+        </span> -->
+        <span v-if="item.missedtime && (item.missedtime > 0)" class="missed-icon">
+          <svg width="32" height="15" viewBox="0 0 32 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.1254 7.56271C14.1266 8.4359 13.953 9.30049 13.6149 10.1056C13.2767 10.9106 12.7809 11.6399 12.1566 12.2504H19.8443C18.7578 11.1858 18.0748 9.77681 17.9122 8.26438C17.7496 6.75195 18.1174 5.22999 18.9527 3.95873C19.7881 2.68748 21.0391 1.7459 22.4919 1.29498C23.9447 0.844054 25.509 0.911805 26.9173 1.48664C28.3257 2.06148 29.4906 3.1077 30.2129 4.44642C30.9352 5.78513 31.1701 7.33319 30.8773 8.8259C30.5845 10.3186 29.7822 11.6632 28.6077 12.6299C27.4332 13.5966 25.9594 14.1252 24.4382 14.1254H7.56271C6.26473 14.1254 4.9959 13.7405 3.91666 13.0194C2.83743 12.2983 1.99627 11.2733 1.49956 10.0741C1.00284 8.87497 0.87288 7.55543 1.1261 6.28239C1.37933 5.00935 2.00436 3.83999 2.92217 2.92218C3.83999 2.00436 5.00935 1.37933 6.28239 1.1261C7.55543 0.87288 8.87497 1.00284 10.0741 1.49956C11.2733 1.99627 12.2983 2.83743 13.0194 3.91666C13.7405 4.9959 14.1254 6.26473 14.1254 7.56271ZM2.87506 7.56271C2.87506 8.80595 3.36894 9.99827 4.24804 10.8774C5.12715 11.7565 6.31947 12.2504 7.56271 12.2504C8.80595 12.2504 9.99827 11.7565 10.8774 10.8774C11.7565 9.99827 12.2504 8.80595 12.2504 7.56271C12.2504 6.31947 11.7565 5.12715 10.8774 4.24804C9.99827 3.36894 8.80595 2.87506 7.56271 2.87506C6.31947 2.87506 5.12715 3.36894 4.24804 4.24804C3.36894 5.12715 2.87506 6.31947 2.87506 7.56271ZM29.1259 7.56271C29.1259 6.31947 28.632 5.12715 27.7529 4.24804C26.8738 3.36894 25.6815 2.87506 24.4382 2.87506C23.195 2.87506 22.0027 3.36894 21.1236 4.24804C20.2445 5.12715 19.7506 6.31947 19.7506 7.56271C19.7506 8.80595 20.2445 9.99827 21.1236 10.8774C22.0027 11.7565 23.195 12.2504 24.4382 12.2504C25.6815 12.2504 26.8738 11.7565 27.7529 10.8774C28.632 9.99827 29.1259 8.80595 29.1259 7.56271Z" fill="#FF3232" stroke="#FF3232" stroke-width="0.8"/>
+          </svg>
+          <span class="missedtimes">{{item.missedtime}}</span>
         </span>
       </div>
     </div>
@@ -54,6 +60,7 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 
 export default {
   name: 'CallHistoryItem',
@@ -61,6 +68,9 @@ export default {
     item: Object,
   },
   components: {
+  },
+  computed: {
+    ...mapGetters(['mode']),
   },
   mounted() {
     console.log(this.item)
@@ -131,16 +141,40 @@ div.callhistoryitem {
       justify-content: space-between;
       max-width: 55px;
       width: 100%;
-      span.top {
+      height: 100%;
+      span.top {   
         width: 100%;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: flex-end;
         span.time {
           font-size: 10px;
           font-weight: 500;
           color: #B7B7B7;
           margin-left: 4.5px;
+          margin-bottom: 24px;
+        }
+      }
+      span.missed-icon {
+        text-align: right;
+        position: relative;
+        margin-right: 12px;
+        span.missedtimes {
+          position: absolute;
+          font-weight: 500;
+          font-size: 10px;
+          line-height: 12px;
+          color: #FFFFFF;
+          background: #FF3232;
+          border-radius: 100%;
+          width: 13px;
+          height: 13px;
+          min-width: 13px;
+          top: -9px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          right: -11px;
         }
       }
       span.bottom {

@@ -22,7 +22,10 @@
       <div v-if="index === 0 || (index > 0 && messages[index-1].day !== message.day)" class="msgbox-day">
         <span>{{message.day}}</span>
       </div>
-      <div class="message" >
+      <div 
+        v-if="mode === 'chats' || (mode === 'voicemail' && message.type === 'voice')" 
+        class="message"
+      >
         <div class="message-upper">
           <span v-if="action === 'select'" @click="selectMsg(index)" :class="selected.has(index) ? {'select-check-active action': true} : {'select-check action': true}"></span>
           <div :class="message.received ? {'msg-box-wrapper received': true} : {'msg-box-wrapper sent': true}">
@@ -107,7 +110,7 @@
         <input type="text" placeholder="Message" class="msg" v-model="newMessage">
       </div>
       <span :class="message === '' ? {'action': true} : {'send-icon action': true}">
-        <svg v-if="message === ''" @click="mode = 'voice'" width="13" height="19" viewBox="0 0 13 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg v-if="message === ''" @click="chatmode = 'voice'" width="13" height="19" viewBox="0 0 13 19" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M9.75 4.40001C9.75 2.52224 8.183 1 6.25 1C4.317 1 2.75 2.52224 2.75 4.40001V8.65003C2.75 10.5278 4.317 12.05 6.25 12.05C8.183 12.05 9.75 10.5278 9.75 8.65003V4.40001Z" stroke="#9A9A9A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M11.5 13.1482C10.8438 13.8725 10.036 14.4525 9.13071 14.8495C8.22537 15.2464 7.24328 15.4511 6.25 15.45C5.25672 15.4511 4.27463 15.2464 3.36929 14.8495C2.46395 14.4525 1.65621 13.8725 1 13.1482" stroke="#9A9A9A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M6.25 15.45V18" stroke="#9A9A9A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -122,7 +125,7 @@
       <span class="text">Records a voice message</span>
       <div class="voicemsg-left">
         <span class="recorded">
-          <span class="close action" @click="mode = 'message'">
+          <span class="close action" @click="chatmode = 'message'">
             <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M7.1998 0.800049L0.799805 7.20005M7.1998 7.20005L0.799805 0.800049L7.1998 7.20005Z" stroke="black" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -186,14 +189,14 @@ export default {
     ContextMenu,
   },
   computed: {
-    ...mapGetters(['messages']),
+    ...mapGetters(['messages', 'mode']),
   },
   data() {
     return {
       action: '',
       id: -1,
       selected: new Set(),
-      mode: 'message',
+      chatmode: 'message',
       newMessage: '',
     }
   },
