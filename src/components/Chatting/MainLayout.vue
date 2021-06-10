@@ -123,7 +123,7 @@ export default {
       helpmenu: [
         {
           href: '/download',
-          title: 'Suppor',
+          title: 'Support',
           class: 'helpmenu-item',
         },
         {
@@ -138,7 +138,7 @@ export default {
         },
         {
           href: '/download',
-          title: 'Blog',
+          title: 'Blogs',
           class: 'helpmenu-item',
         },
         {

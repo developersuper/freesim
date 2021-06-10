@@ -4,9 +4,9 @@
     <div class="forgotpassword">
       <div class="auth-redtitle">Free SIM</div>
       <div class="auth-bigsubtitle">Forgot your password?</div>
-      <div class="auth-text">Please enter the e-mail address<br>when creating your account, we’ll send you<br>intruction tio reset your password.</div>
+      <div class="auth-text">Please enter the e-mail address<br>when creating your account, we’ll send you<br>instruction to reset your password.</div>
       <input type="text" placeholder="Email" />
-      <span class="auth-btn action">Send</span>
+      <span class="auth-btn action" @click="goSignin">Send</span>
     </div>
   </template>
 </desktop-layout>
@@ -19,6 +19,11 @@ export default {
   name: 'Forgot',
   components: {
     DesktopLayout,
+  },
+  methods: {
+    goSignin() {
+      this.$router.push('/signin')
+    }
   }
 }
 </script>

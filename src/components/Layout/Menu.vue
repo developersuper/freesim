@@ -88,6 +88,9 @@ div.toolbarmenu {
       span {
         white-space: nowrap;
       }
+      span.hotkey {
+        min-width: 39px;
+      }
     }
     div.divider {
       hr {
