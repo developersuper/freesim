@@ -9,6 +9,7 @@ const getters = {
   contacts: (state) => state.contacts,
   viewport: (state) => state.viewport,
   window: (state) => state.window,
+  call: (state) => state.call,
 }
 
 export default getters;

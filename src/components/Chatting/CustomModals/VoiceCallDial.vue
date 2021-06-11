@@ -20,10 +20,15 @@
     <div class="dial-body">
       <template v-if="modal === 'dialpad'" >
         <div class="number-input" autofocus>
-          <input type="text" v-model="dial">
-          <span class="plus-icon action">
+          <span class="plus-icon action" @click="goAddContact">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5.72888 11.7443L5.73275 6.82304L0.811526 6.8269L0.811526 5.729L5.73275 5.73287L5.72888 0.811645H6.82678L6.82292 5.73287L11.7403 5.73287L11.7403 6.82304L6.82292 6.82304L6.82292 11.7404L5.72888 11.7443Z" fill="#676767"/>
+            </svg>
+          </span>
+          <input type="text" v-model="dial">
+          <span class="remove-icon action" @click="removeNumber">
+            <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.7502 6.97519e-09C17.5803 -5.43467e-05 18.379 0.317554 18.9824 0.887671C19.5858 1.45779 19.9482 2.23719 19.9952 3.066L20.0002 3.25V12.75C20.0002 13.5801 19.6826 14.3788 19.1125 14.9822C18.5424 15.5856 17.763 15.948 16.9342 15.995L16.7502 16H8.24918C7.48703 16.0003 6.74904 15.7327 6.16418 15.244L6.00918 15.105L1.01418 10.355C0.389718 9.76111 0.0266962 8.94352 0.00494306 8.08202C-0.0168101 7.22052 0.304486 6.38565 0.898178 5.761L1.01418 5.645L6.00918 0.895C6.56146 0.369927 7.28068 0.0556187 8.04118 0.00699998L8.25018 6.97519e-09H16.7512H16.7502ZM9.44618 4.397C9.30168 4.28948 9.12332 4.23755 8.94369 4.25069C8.76406 4.26384 8.59516 4.3412 8.46786 4.46862C8.34056 4.59603 8.26337 4.76501 8.25039 4.94465C8.23742 5.12429 8.28952 5.30261 8.39718 5.447L8.47018 5.53L10.9402 8L8.47018 10.47L8.39718 10.554C8.28966 10.6985 8.23772 10.8769 8.25087 11.0565C8.26402 11.2361 8.34138 11.405 8.46879 11.5323C8.59621 11.6596 8.76519 11.7368 8.94483 11.7498C9.12447 11.7628 9.30278 11.7107 9.44718 11.603L9.53018 11.53L12.0002 9.061L14.4702 11.531L14.5542 11.603C14.6987 11.7105 14.877 11.7625 15.0567 11.7493C15.2363 11.7362 15.4052 11.6588 15.5325 11.5314C15.6598 11.404 15.737 11.235 15.75 11.0554C15.7629 10.8757 15.7108 10.6974 15.6032 10.553L15.5302 10.47L13.0612 8L15.5312 5.53L15.6032 5.446C15.7107 5.3015 15.7626 5.12314 15.7495 4.94351C15.7363 4.76388 15.659 4.59498 15.5316 4.46768C15.4041 4.34039 15.2352 4.26319 15.0555 4.25022C14.8759 4.23724 14.6976 4.28934 14.5532 4.397L14.4702 4.47L12.0002 6.939L9.53018 4.469L9.44618 4.397Z" fill="white"/>
             </svg>
           </span>
         </div>
@@ -108,7 +113,7 @@
         <span class="call-duration">00:24</span>
         <div class="call-icon-btns">
           <span class="icon-btn">
-            <span class="icon" @click="dialpad = !dialpad">
+            <span class="icon" @click="setDialpad">
               <span class="icon-group">
                 <svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="3.5" cy="3.5" r="3.5" :fill="dialpad ? '#F2F0F0' : '#A2A2A2'"/>
@@ -195,7 +200,7 @@ export default {
       hideDisplay: true,
       video: false,
       record: false,
-      dialpad: false,
+      dialpad: true,
       mute: false,
       pause: false,
     }
@@ -216,6 +221,15 @@ export default {
     },
     setVideoCall() {
       this.$store.dispatch('setModal', 'videocall')
+    },
+    setDialpad() {
+      this.$store.dispatch('setModal', 'dialpad')
+    },
+    goAddContact() {
+      this.$store.dispatch('setModal', 'addcontact')
+    },
+    removeNumber () {
+      this.dial = this.dial.substring(0, this.dial.length - 1)
     }
   }
 }
@@ -248,8 +262,13 @@ div.voicecalldial {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
+    // position: relative;
     div.number-input {
+      display: flex;
+      align-items: center;
+      max-width: 322px;
+      width: 100%;
+      justify-content: space-between;
       input {
         border: none;
         outline: none;
@@ -261,9 +280,9 @@ div.voicecalldial {
         width: 100%;
       }
       span.plus-icon {
-        position: absolute;
-        top: 67px;
-        right: 25px;
+        // position: absolute;
+        // top: 67px;
+        // right: 25px;
         width: 18px;
         height: 18px;
         min-width: 18px;
@@ -271,7 +290,10 @@ div.voicecalldial {
         justify-content: center;
         align-items: center;
         border-radius: 100%;
-        background-color: white;
+        background-color: #00DE5E;
+    }
+    span.remove-icon {
+
     }
       margin-bottom: 72px;
       margin-top: 55px;

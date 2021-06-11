@@ -1,9 +1,10 @@
 
 const mutations = {
   setMode(state, mode) {
-    state.activechatter = -1
+    state.activechatter = 0
     state.chatSearch = ''
     state.mode = mode
+    // alert(mode)
     if(mode == 'calls') {
       state.modal = 'callhistory'
     }
@@ -28,6 +29,9 @@ const mutations = {
   },
   setWindow(state, window) {
     state.window = window
+  },
+  setCall(state, call) {
+    state.call = call
   }
 }
 

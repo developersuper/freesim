@@ -4,6 +4,7 @@ import actions from './actions'
 
 const state = {
   mode: 'chats',
+  call: false,
   chats: [
     {
       name: 'Jane Fisher',
@@ -217,7 +218,7 @@ const state = {
       time: '12:37',
       missedtime: 59,
       day: 'Today',
-      
+
     },
     {
       type: 'Incoming',
@@ -269,7 +270,7 @@ const state = {
       day: 'Today'
     },
   ],
-  activechatter: -1,
+  activechatter: 0,
   chatSearch: '',
   modal: '',
   contacts: [
@@ -277,42 +278,49 @@ const state = {
       name: 'Jane Fisher',
       fav: true,
       avatar: require('@/assets/images/user.png'),
+      mobile: '0223122123',
       lastView: 'online'
     },
     {
       name: 'Adam Brogy',
       fav: true,
       avatar: require('@/assets/images/user.png'),
+      mobile: '0223122123',
       lastView: 'online'
     },
     {
       name: 'Martin Davids',
       fav: false,
       avatar: require('@/assets/images/user.png'),
+      mobile: '0223122123',
       lastView: 'was 22:11'
     },
     {
       name: 'Stiv Amstrong',
       fav: false,
       avatar: require('@/assets/images/user.png'),
+      mobile: '0223122123',
       lastView: 'was 18:22'
     },
     {
       name: 'Jim Tomason',
       fav: false,
       avatar: require('@/assets/images/user.png'),
+      mobile: '0223122123',
       lastView: 'was 18:20'
     },
     {
       name: 'Linda Gamson',
       fav: false,
       avatar: require('@/assets/images/user.png'),
+      mobile: '0223122123',
       lastView: 'was 17:33'
     },
     {
       name: 'Lee Chau',
       fav: false,
       avatar: require('@/assets/images/user.png'),
+      mobile: '0223122123',
       lastView: 'was 16:17'
     },
   ],

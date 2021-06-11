@@ -11,7 +11,7 @@
     >
       <template v-slot:header>
         <div v-if="collapsed && menutype === 'sidebarmenu'" class="sidebarheader">
-          <span>Free Sim</span>
+          <span>Free SIM</span>
         </div>
         <div v-if="!collapsed && menutype === 'sidebarmenu'" class="sidebarheader-extended">
           <img :src="user.avatar" alt="">

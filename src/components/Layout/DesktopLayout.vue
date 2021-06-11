@@ -3,7 +3,7 @@
     <div class="toolbar">
       <div class="topbar">
         <div class="topbar-left">
-          <span>Free Sim</span>
+          <span>Free SIM</span>
           <span>phone service</span>
         </div>
         <div class="icons">

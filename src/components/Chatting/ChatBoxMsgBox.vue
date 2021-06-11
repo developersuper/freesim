@@ -23,7 +23,7 @@
         <span>{{message.day}}</span>
       </div>
       <div 
-        v-if="mode === 'chats' || (mode === 'voicemail' && message.type === 'voice')" 
+        v-if="mode === 'chats' || (mode === 'voicemail' && message.type === 'voice' || mode === 'chatscalling')" 
         class="message"
       >
         <div class="message-upper">
@@ -93,9 +93,26 @@
         </div>
       </div>
     </template>
+    <div 
+      v-if="call"
+      class="chatscalling"
+    >
+      <div class="chatscalling-inner">
+        <img :src="require('@/assets/images/videocalluser.png')" alt="" class="">
+        <span class="endcall-btn" @click.stop="endCall">
+          <svg width="66" height="66" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="33" cy="33" r="33" fill="#FF352D"/>
+            <path d="M33.5706 30.7971C37.1425 30.7983 40.9209 31.1594 40.9209 32.7958C40.9209 35.1364 40.6229 36.8789 45.2805 37.3856C49.9358 37.8924 49.3365 34.5259 49.3354 32.2586C49.3354 29.6404 43.2163 25.9996 33.5706 25.9985C23.9248 25.9996 17.8092 29.6437 17.8103 32.2631C17.8092 34.5326 17.2043 37.8912 21.8596 37.3845C26.516 36.8789 26.2192 35.1375 26.2181 32.7935C26.2214 31.1605 29.9987 30.7983 33.5706 30.7971Z" fill="white"/>
+          </svg>
+        </span>
+        <div class="chatscall-hover" @click="backToCall">
+          Back to<br>video call
+        </div>
+      </div>
+    </div>
   </div>
   <div class="chatboxbottom">
-    <template v-if="action === ''">
+    <template v-if="chatmode === 'message' && mode === 'chats' && action === ''">
       <div class="chatboxbottom-msg-left">
         <span class="icon action">
           <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -109,19 +126,19 @@
         </span>
         <input type="text" placeholder="Message" class="msg" v-model="newMessage">
       </div>
-      <span :class="message === '' ? {'action': true} : {'send-icon action': true}">
-        <svg v-if="message === ''" @click="chatmode = 'voice'" width="13" height="19" viewBox="0 0 13 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <span :class="newMessage === '' ? {'action': true} : {'send-icon action': true}">
+        <svg v-if="newMessage === ''" @click="chatmode = 'voice'" width="13" height="19" viewBox="0 0 13 19" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M9.75 4.40001C9.75 2.52224 8.183 1 6.25 1C4.317 1 2.75 2.52224 2.75 4.40001V8.65003C2.75 10.5278 4.317 12.05 6.25 12.05C8.183 12.05 9.75 10.5278 9.75 8.65003V4.40001Z" stroke="#9A9A9A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M11.5 13.1482C10.8438 13.8725 10.036 14.4525 9.13071 14.8495C8.22537 15.2464 7.24328 15.4511 6.25 15.45C5.25672 15.4511 4.27463 15.2464 3.36929 14.8495C2.46395 14.4525 1.65621 13.8725 1 13.1482" stroke="#9A9A9A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M6.25 15.45V18" stroke="#9A9A9A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M4.5 18H8" stroke="#9A9A9A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <svg v-if="message !== ''" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg v-if="newMessage !== ''" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1.4012 0.563709L20.5949 10.0212C20.6996 10.0728 20.7878 10.1526 20.8494 10.2517C20.911 10.3508 20.9437 10.4651 20.9437 10.5818C20.9437 10.6985 20.911 10.8129 20.8494 10.912C20.7878 11.011 20.6996 11.0909 20.5949 11.1425L1.39995 20.6C1.29241 20.6528 1.17196 20.6736 1.05294 20.6599C0.933912 20.6462 0.821332 20.5986 0.728604 20.5227C0.635876 20.4468 0.566909 20.3459 0.529916 20.232C0.492923 20.118 0.489463 19.9958 0.519949 19.88L2.9812 10.5875L0.518699 1.28496C0.487709 1.16885 0.490847 1.04627 0.52774 0.931904C0.564633 0.817536 0.633714 0.716229 0.72671 0.640117C0.819706 0.564006 0.932672 0.516318 1.05208 0.502767C1.17148 0.489215 1.29226 0.510374 1.39995 0.563709H1.4012ZM2.07995 2.29246L4.09245 9.89496L4.16995 9.87996L4.24995 9.87496H12.9999C13.1561 9.87467 13.3068 9.93287 13.4222 10.0381C13.5376 10.1433 13.6094 10.2879 13.6235 10.4435C13.6377 10.599 13.593 10.7542 13.4984 10.8785C13.4038 11.0028 13.2661 11.0871 13.1124 11.115L12.9999 11.125H4.24995C4.21139 11.1251 4.1729 11.1218 4.13495 11.115L2.0812 18.8725L18.9037 10.5825L2.07995 2.29246Z" fill="white"/>
         </svg>
       </span>
     </template>
-    <template v-if="action === 'voice'">
+    <template v-if="chatmode === 'voice' && mode === 'chats'">
       <span class="text">Records a voice message</span>
       <div class="voicemsg-left">
         <span class="recorded">
@@ -144,6 +161,108 @@
             <path d="M11.5 13.1482C10.8438 13.8725 10.036 14.4525 9.13071 14.8495C8.22537 15.2464 7.24328 15.4511 6.25 15.45C5.25672 15.4511 4.27463 15.2464 3.36929 14.8495C2.46395 14.4525 1.65621 13.8725 1 13.1482" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M6.25 15.45V18" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M4.5 18H8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </div>
+    </template>
+    <template v-if="mode === 'voicemail'">
+      <div class="voicemail-left">
+        <span v-if="action === ''" class="text">Voice mail</span>
+        <div v-if="action === 'recording'" class="recording">
+          <span class="duration">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="5" cy="5" r="5" fill="#F60000"/>
+            </svg>
+            00:07
+          </span>
+          <span class="wave">
+            <svg width="70" height="41" viewBox="0 0 70 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="44" y="7" width="2" height="28" rx="1" fill="#FFB4B4"/>
+              <rect x="40" y="13" width="2" height="16" rx="1" fill="#FFB4B4"/>
+              <rect x="36" y="6" width="2" height="30" rx="1" fill="#FFB4B4"/>
+              <rect x="32" y="1" width="2" height="40" rx="1" fill="#FFB4B4"/>
+              <rect x="28" y="3" width="2" height="36" rx="1" fill="#FFB4B4"/>
+              <rect x="24" y="1" width="2" height="40" rx="1" fill="#FFB4B4"/>
+              <rect x="20" y="8" width="2" height="26" rx="1" fill="#FFB4B4"/>
+              <rect x="16" y="13" width="2" height="16" rx="1" fill="#FFB4B4"/>
+              <rect x="12" y="15" width="2" height="12" rx="1" fill="#FFB4B4"/>
+              <rect x="48" y="8" width="2" height="25" rx="1" fill="#FFB4B4"/>
+              <rect x="52" width="2" height="39" rx="1" fill="#FFB4B4"/>
+              <rect x="56" y="10" width="2" height="22" rx="1" fill="#FFB4B4"/>
+              <rect x="60" y="13" width="2" height="16" rx="1" fill="#FFB4B4"/>
+              <rect x="64" y="15" width="2" height="12" rx="1" fill="#FFB4B4"/>
+              <rect x="68" y="18" width="2" height="6" rx="1" fill="#FFB4B4"/>
+              <rect x="4" y="18" width="2" height="8" rx="1" fill="#FFB4B4"/>
+              <rect x="8" y="16" width="2" height="11" rx="1" fill="#FFB4B4"/>
+              <rect y="19" width="2" height="6" rx="1" fill="#FFB4B4"/>
+            </svg>
+          </span>
+        </div>
+        <div v-if="action === 'recorded'" class="recorded">
+          <span class="close-recorded action" @click="action = ''">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="11" cy="11" r="11" fill="#FF3232"/>
+              <path d="M15 7L7 15M15 15L7 7L15 15Z" stroke="white" stroke-width="1.83333" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <div class="recorded-iconandduration">
+            <svg width="102" height="22" viewBox="0 0 102 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="20" width="2" height="22" rx="1" fill="#7A7A7A"/>
+              <rect x="28" width="2" height="22" rx="1" fill="#7A7A7A"/>
+              <rect x="68" y="7" width="2" height="15" rx="1" fill="#7A7A7A"/>
+              <rect x="32" width="2" height="22" rx="1" fill="#7A7A7A"/>
+              <rect x="72" width="2" height="22" rx="1" fill="#7A7A7A"/>
+              <rect x="76" width="2" height="22" rx="1" fill="#7A7A7A"/>
+              <rect x="80" width="2" height="22" rx="1" fill="#7A7A7A"/>
+              <rect x="36" y="6" width="2" height="16" rx="1" fill="#7A7A7A"/>
+              <rect x="84" y="6" width="2" height="16" rx="1" fill="#7A7A7A"/>
+              <rect x="40" y="11" width="2" height="11" rx="1" fill="#7A7A7A"/>
+              <rect x="44" y="15" width="2" height="7" rx="1" fill="#7A7A7A"/>
+              <rect x="60" y="14" width="2" height="8" rx="1" fill="#7A7A7A"/>
+              <rect x="24" y="12" width="2" height="10" rx="1" fill="#7A7A7A"/>
+              <rect x="64" y="11" width="2" height="11" rx="1" fill="#7A7A7A"/>
+              <rect x="16" y="16" width="2" height="6" rx="1" fill="#7A7A7A"/>
+              <rect x="56" y="16" width="2" height="6" rx="1" fill="#7A7A7A"/>
+              <rect x="12" y="20" width="2" height="2" rx="1" fill="#7A7A7A"/>
+              <rect x="100" y="20" width="2" height="2" rx="1" fill="#7A7A7A"/>
+              <rect x="8" y="20" width="2" height="2" rx="1" fill="#7A7A7A"/>
+              <rect x="96" y="20" width="2" height="2" rx="1" fill="#7A7A7A"/>
+              <rect x="4" y="20" width="2" height="2" rx="1" fill="#7A7A7A"/>
+              <rect x="92" y="20" width="2" height="2" rx="1" fill="#7A7A7A"/>
+              <rect x="52" y="20" width="2" height="2" rx="1" fill="#7A7A7A"/>
+              <rect y="20" width="2" height="2" rx="1" fill="#7A7A7A"/>
+              <rect x="88" y="20" width="2" height="2" rx="1" fill="#7A7A7A"/>
+              <rect x="48" y="20" width="2" height="2" rx="1" fill="#7A7A7A"/>
+            </svg>
+            <span class="duration">00:37</span>
+          </div>
+        </div>
+      </div>
+      <div class="voicemail-right">
+        <span class="record action">
+          <svg v-if="action === '' || action === 'recorded'" width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg" @click="action = 'recording'">
+            <circle cx="23" cy="23" r="23" fill="#FF3232"/>
+            <path d="M27 17.4C27 15.5222 25.433 14 23.5 14C21.567 14 20 15.5222 20 17.4V21.65C20 23.5278 21.567 25.05 23.5 25.05C25.433 25.05 27 23.5278 27 21.65V17.4Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M28.5 26.1484C27.8438 26.8728 27.036 27.4528 26.1307 27.8497C25.2254 28.2467 24.2433 28.4514 23.25 28.4502C22.2567 28.4514 21.2746 28.2467 20.3693 27.8497C19.464 27.4528 18.6562 26.8728 18 26.1484" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M23.75 28C24.1642 28 24.5 28.3358 24.5 28.75V31.3C24.5 31.7142 24.1642 32.05 23.75 32.05C23.3358 32.05 23 31.7142 23 31.3V28.75C23 28.3358 23.3358 28 23.75 28Z" fill="white"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M21 31.2998C21 30.8856 21.3358 30.5498 21.75 30.5498H25.25C25.6642 30.5498 26 30.8856 26 31.2998C26 31.714 25.6642 32.0498 25.25 32.0498H21.75C21.3358 32.0498 21 31.714 21 31.2998Z" fill="white"/>
+          </svg>
+          <span v-if="action === 'recording'" class="recording-icon" @click="action = 'recorded'">
+            <svg width="75" height="75" viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="37.5" cy="37.5" r="36.5" fill="white" stroke="#FF3232" stroke-width="2"/>
+              <circle cx="37.5" cy="37.5" r="31.5" fill="#FF3232"/>
+              <path d="M42.5 30.8572C42.5 28.1746 40.2614 26 37.5 26C34.7386 26 32.5 28.1746 32.5 30.8572V36.9286C32.5 39.6111 34.7386 41.7858 37.5 41.7858C40.2614 41.7858 42.5 39.6111 42.5 36.9286V30.8572Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M45 43.3555C44.0626 44.3902 42.9086 45.2188 41.6153 45.7859C40.322 46.3529 38.919 46.6454 37.5 46.6438C36.081 46.6454 34.678 46.3529 33.3847 45.7859C32.0914 45.2188 30.9374 44.3902 30 43.3555" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M37.5 46.6436V50.2864" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M35 50.2861H40" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+
+        </span>
+        <span class="send action">
+          <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="23" cy="23" r="23" fill="#00DE5E"/>
+            <path d="M34.3029 22.2772L16.4279 13.3397C16.2878 13.2697 16.1304 13.2416 15.9747 13.2589C15.819 13.2762 15.6717 13.3381 15.5504 13.4372C15.4345 13.5343 15.3481 13.6618 15.3007 13.8053C15.2533 13.9488 15.2469 14.1027 15.2823 14.2497L17.6873 23.0003L15.2498 31.7266C15.2166 31.8493 15.2128 31.9781 15.2385 32.1026C15.2642 32.2271 15.3187 32.3438 15.3978 32.4434C15.4768 32.543 15.5781 32.6226 15.6935 32.6759C15.8089 32.7293 15.9352 32.7547 16.0623 32.7503C16.1894 32.7496 16.3147 32.719 16.4279 32.661L34.3029 23.7235C34.436 23.6553 34.5477 23.5517 34.6257 23.4241C34.7036 23.2965 34.7449 23.1499 34.7449 23.0003C34.7449 22.8508 34.7036 22.7042 34.6257 22.5766C34.5477 22.449 34.436 22.3454 34.3029 22.2772ZM17.3216 30.4022L19.1173 23.8128H26.6248V22.1878H19.1173L17.3216 15.5985L32.1173 23.0003L17.3216 30.4022Z" fill="white"/>
           </svg>
         </span>
       </div>
@@ -189,7 +308,7 @@ export default {
     ContextMenu,
   },
   computed: {
-    ...mapGetters(['messages', 'mode']),
+    ...mapGetters(['messages', 'mode', 'call']),
   },
   data() {
     return {
@@ -257,6 +376,13 @@ export default {
     },
     selectMsg(id) {
       this.selected.has(id) ? this.selected.delete(id) : this.selected.add(id)
+    },
+    endCall() {
+      this.$store.commit('setMode', 'chats')
+      this.$store.commit('setCall', false)
+    },
+    backToCall() {
+      this.$store.commit('setModal', 'videocall')
     }
   },
   mounted() {
@@ -433,11 +559,63 @@ div.msgbox {
       z-index: -1;
     }
   }
+
+  div.chatscalling {
+    position: fixed;
+    top: 140px;
+    right: 5px;
+    div.chatscalling-inner {
+      width: 198px;
+      height: 198px;
+      min-width: 198px;
+      position: relative;
+      img {
+        width: 198px;
+        height: 198px;
+        min-width: 198px;
+        border-radius: 100%;
+      }
+      span.endcall-btn {
+        z-index: 1000;
+        position: absolute;
+        bottom: 0;
+        right: 6px;
+      }
+      span.endcall-btn:hover {
+        cursor: pointer;
+      }
+      div.chatscall-hover {
+        display: none;
+      }
+    }
+    div.chatscalling-inner:hover {
+      div.chatscall-hover {
+        z-index: 100;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        left: 0;
+        font-size: 20px;
+        color: #FFFFFF;
+        border-radius: 100%;
+        backdrop-filter: blur(8px);
+      }
+    }
+  }
+  @media screen and (max-width: 900px) {
+    div.chatscalling {
+      top: 200px;
+    }
+  }
 }
 @media screen and (max-width: 900px) {
     div.msgbox {
-    height: calc(100% - 168px);
-  }
+      height: calc(100% - 168px);
+    }
 }
 div.chatboxbottom {
   height: 57px;
@@ -552,6 +730,68 @@ div.chatboxbottom {
     max-width: 120px;
     width: 100%;
     justify-content: space-between;
+  }
+  div.voicemail-left {
+    div.recording {
+      display: flex;
+      align-items: center;
+      span.duration {
+        svg {
+          margin-right: 12px;
+        }
+        font-weight: 500;
+        font-size: 19px;
+        line-height: 22px;
+        color: #B7B7B7;
+        margin-right: 24px;
+      }
+    }
+    div.recorded {
+      display: flex;
+      align-items: center;
+      span.close-recorded {
+        margin-right: 20px;
+      }
+      div.recorded-iconandduration {
+        display: flex;
+        flex-direction: column;
+        span.duration {
+          margin-top: 5px;
+          font-weight: 500;
+          font-size: 10px;
+          line-height: 12px;
+          color: #9E9E9E;
+        }
+      }
+    }
+  }
+  div.voicemail-right{
+    display: flex;
+    align-items: center;
+    span {
+      display: flex;
+      align-items: center;
+      align-self: stretch;
+      position: relative;
+    }
+    svg {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+    }
+    span.recording-icon {
+      position: absolute;
+      right: -10px;
+      bottom: 0;
+      svg {
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+      }
+    }
+    span.record {
+      margin-right: 24px
+    }
   }
 }
 </style>

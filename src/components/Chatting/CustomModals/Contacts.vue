@@ -3,7 +3,7 @@
     <div class="tab-header">
       <div class="tab-header-left">
         <span :class="tab === 'all' ? {'active action': true} : {'action': true}" @click="handleTab('all')">All</span>
-        <span :class="tab === 'fav' ? {'active action': true} : {'action': true}" @click="handleTab('fav')">Favorit</span>
+        <span :class="tab === 'fav' ? {'active action': true} : {'action': true}" @click="handleTab('fav')">Favorite</span>
       </div>
       <span class="action" @click="addContact">Add Contact</span>
     </div>
