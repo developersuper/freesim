@@ -151,11 +151,11 @@ export default {
           title: 'Privacy & Policy',
           class: 'helpmenu-item',
         },
-        {
-          href: '/download',
-          title: '2G Fair Use Policy',
-          class: 'helpmenu-item',
-        },
+        // {
+        //   href: '/download',
+        //   title: '2G Fair Use Policy',
+        //   class: 'helpmenu-item',
+        // },
         {
           href: '/download',
           title: 'Download Debug Logs',

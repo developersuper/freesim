@@ -150,8 +150,8 @@
             </div>
             <div v-if="selected==='Legal and Privacy'" class="legalandprivacy">
               <span class="settings-body-title">Legal and Privacy</span>
-              <span class="legalandprivacy-items action">"Privacy Policy" for free SIM</span>
-              <span class="legalandprivacy-items action">"Terms & Conditions" for free SIM</span>
+              <span class="legalandprivacy-items action">Privacy Policy</span>
+              <span class="legalandprivacy-items action">Terms & Conditions</span>
               <!-- <span class="legalandprivacy-items action">"2G Fair Use Policy" for free SIM</span> -->
             </div>
           </div>
