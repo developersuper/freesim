@@ -94,6 +94,8 @@ div.chatboxheader {
     display: flex;
     align-items: center;
     margin: auto 24px;
+    max-width: 175px;
+    width: 100%;
     span.title {
       margin-left: 18px;
     }
