@@ -38,6 +38,7 @@ div.search {
     border-radius: 12px;
     max-width: 260px;
     min-width: 100px;
+    height: 24px;
     width: 100%;
     img {
       height: 11.85px;

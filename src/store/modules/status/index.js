@@ -8,7 +8,7 @@ const state = {
   chats: [
     {
       name: 'Jane Fisher',
-      avatar: require('@/assets/images/user.png'),
+      avatar: require('@/assets/images/user.png'), 
       messages: [
         {
           type: 'text',
@@ -93,7 +93,7 @@ const state = {
     },
     {
       name: 'Adam Brogy',
-      avatar: require('@/assets/images/avatars/adam.png'),
+      avatar: require('@/assets/images/user.png'),
       messages: [{
         type: 'text',
         text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
@@ -106,7 +106,7 @@ const state = {
     },
     {
       name: 'Luisa Simpson',
-      avatar: require('@/assets/images/avatars/luisa.png'),
+      avatar: require('@/assets/images/user.png'),
       messages: [{
         type: 'text',
         text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
@@ -119,7 +119,7 @@ const state = {
     },
     {
       name: 'Martin Davids',
-      avatar: require('@/assets/images/avatars/martin.png'),
+      avatar: require('@/assets/images/user.png'),
       messages: [{
         type: 'text',
         text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
@@ -132,7 +132,7 @@ const state = {
     },
     {
       name: 'Stive Amstrong',
-      avatar: require('@/assets/images/avatars/stive.png'),
+      avatar: require('@/assets/images/user.png'),
       messages: [{
         type: 'text',
         text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
@@ -145,7 +145,7 @@ const state = {
     },
     {
       name: 'Jane Fisher',
-      avatar: require('@/assets/images/user.png'),
+      avatar: require('@/assets/images/user.png'), 
       messages: [{
         type: 'text',
         text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
@@ -158,7 +158,7 @@ const state = {
     },
     {
       name: 'Adam Brogy',
-      avatar: require('@/assets/images/avatars/adam.png'),
+      avatar: require('@/assets/images/user.png'),
       messages: [{
         type: 'text',
         text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
@@ -171,7 +171,7 @@ const state = {
     },
     {
       name: 'Luisa Simpson',
-      avatar: require('@/assets/images/avatars/luisa.png'),
+      avatar: require('@/assets/images/user.png'),
       messages: [{
         type: 'text',
         text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
@@ -184,7 +184,7 @@ const state = {
     },
     {
       name: 'Martin Davids',
-      avatar: require('@/assets/images/avatars/martin.png'),
+      avatar: require('@/assets/images/user.png'),
       messages: [{
         type: 'text',
         text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
@@ -197,7 +197,7 @@ const state = {
     },
     {
       name: 'Stive Amstrong',
-      avatar: require('@/assets/images/avatars/stive.png'),
+      avatar: require('@/assets/images/user.png'),
       messages: [{
         type: 'text',
         text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
