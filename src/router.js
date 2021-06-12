@@ -12,7 +12,7 @@ import Logout from '@/pages/Logout.vue'
 const routes = [
   {
     path: '/',
-    redirect: '/chatting'
+    redirect: '/signin'
   },
   {
     path: "/signup",
