@@ -83,7 +83,9 @@ span.action-title {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 96px;
+  justify-content: center;
+  margin-top: 55px;
+  // margin-top: 96px;
   .auth-title {
     text-align: center;
     font-family: Roboto;
@@ -230,7 +232,7 @@ span.action-title {
 }
 /* width */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 
 /* Track */
@@ -241,8 +243,8 @@ span.action-title {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #E8E8E8; 
-  border-radius: 2px;
-  width: 4px;
+  border-radius: 4px;
+  width: 6px;
 }
 
 /* Handle on hover */

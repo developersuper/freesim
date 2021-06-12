@@ -3,7 +3,7 @@
     <span class="title action" @click.stop="clickMenu">{{title}}</span>
     <div v-if="show" class="menubody">
       <template v-for="(item, index) in items" :key="index">
-        <div v-if="item.text !== null" class="menubodyitem menuhover">
+        <div v-if="item.text !== null" class="menubodyitem menuhover" @click="clickMenuItem(item.event)">
           <span class="itemtext">{{item.text}}</span>
           <span class="hotkey">{{item.hotkey}}</span>
         </div>
@@ -55,6 +55,9 @@ export default {
       if(this.show) {
         this.emitter.emit('menu', {title: this.title})
       }
+    },
+    clickMenuItem(event) {
+      this.$emit('event', event)
     }
   }
 }

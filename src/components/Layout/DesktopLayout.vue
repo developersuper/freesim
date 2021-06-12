@@ -44,35 +44,39 @@ export default {
     my_menu () {
       return [
         { text: "File", menu: [
-          { text: "Logout", hotkey:"" },
+          { 
+            text: "Logout", 
+            hotkey:"", 
+            event: 'logout'
+          },
           { text: null },
-          { text: "Close Window",  hotkey: "Crlt + W"}
+          { text: "Close Window",  hotkey: "Crtl + W", event: ''}
         ] },
         { text: "Edit", menu: [
-          { text: "Undo", hotkey:"Crlt + Z" },
-          { text: "Redo", hotkey:"Crlt + Y" },
+          { text: "Undo", hotkey:"Crtl + Z", event: '' },
+          { text: "Redo", hotkey:"Crtl + Y", event: '' },
           { text: null },
-          { text: "Cut", hotkey:"Crlt + X" },
-          { text: "Copy", hotkey:"Crlt + C" },
-          { text: "Paste", hotkey:"Crlt + V" },
-          { text: "Delete", hotkey:"" },
+          { text: "Cut", hotkey:"Crtl + X", event: '' },
+          { text: "Copy", hotkey:"Crtl + C", event: '' },
+          { text: "Paste", hotkey:"Crtl + V", event: '' },
+          { text: "Delete", hotkey:"" , event: ''},
           { text: null },
-          { text: "Select All",  hotkey: "Crlt + A"}
+          { text: "Select All",  hotkey: "Crtl + A", event: ''}
         ] },
         { text: "View", menu: [
-          { text: "Reload", hotkey:"Crlt + R" },
+          { text: "Reload", hotkey:"Crtl + R", event: '' },
           { text: null },
-          { text: "Actual Size", hotkey:"Crlt + 0" },
-          { text: "Zoom In", hotkey:"Crlt + =" },
-          { text: "Zoom Out", hotkey:"Crlt + -" },
+          { text: "Actual Size", hotkey:"Crtl + 0", event: '' },
+          { text: "Zoom In", hotkey:"Crtl + =", event: '' },
+          { text: "Zoom Out", hotkey:"Crtl + -", event: '' },
         ] },        
         { text: "Windows", menu: [
-          { text: "Minimize", hotkey:"Crlt + Z" },
+          { text: "Minimize", hotkey:"Crtl + Z", event: '' },
           { text: "Zoom", hotkey:"" },
         ] },
         { text: "Help", menu: [
-          { text: "Custom Support", hotkey:"" },
-          { text: "About", hotkey:"" },
+          { text: "Customer Support", hotkey:"", event: '' },
+          { text: "About", hotkey:"", event: '' },
         ] },
       ]
     }
