@@ -67,7 +67,7 @@ export default {
           { text: "Reload", hotkey:"Crtl + R", event: '' },
           { text: null },
           { text: "Actual Size", hotkey:"Crtl + 0", event: '' },
-          { text: "Zoom In", hotkey:"Crtl + =", event: '' },
+          { text: "Zoom In", hotkey:"Crtl + +", event: '' },
           { text: "Zoom Out", hotkey:"Crtl + -", event: '' },
         ] },        
         { text: "Windows", menu: [

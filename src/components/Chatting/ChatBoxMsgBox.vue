@@ -30,6 +30,11 @@
           <span v-if="action === 'select'" @click="selectMsg(index)" :class="selected.has(index) ? {'select-check-active action': true} : {'select-check action': true}"></span>
           <div :class="message.received ? {'msg-box-wrapper received': true} : {'msg-box-wrapper sent': true}">
             <div class="msg-box" @contextmenu="openMsgMenu($event, index)">
+              <div v-if="action === 'reply' && id === index" class="reply action" @click="goBack">
+                <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.96663 1.57893C8.00115 1.56374 8.03893 1.55747 8.0765 1.56069C8.11408 1.56391 8.15024 1.57652 8.18166 1.59737C8.21309 1.61822 8.23877 1.64663 8.25635 1.67999C8.27393 1.71335 8.28284 1.7506 8.28226 1.78831V3.58987C8.28226 3.79707 8.36457 3.99579 8.51108 4.1423C8.65759 4.28881 8.85631 4.37112 9.06351 4.37112C10.1057 4.37112 12.2088 4.37893 14.2198 5.6555C15.7573 6.6305 17.3291 8.4055 18.2744 11.7117C16.6807 10.1758 14.8604 9.343 13.2666 8.90081C12.287 8.63024 11.2803 8.46987 10.2651 8.42268C9.84952 8.40443 9.43329 8.4086 9.0182 8.43518H8.99788L8.99007 8.43675H8.98851L9.06351 9.21487L8.98538 8.43675C8.79254 8.45613 8.61379 8.54649 8.48385 8.69029C8.35391 8.8341 8.28206 9.02106 8.28226 9.21487V11.0164C8.28226 11.1852 8.11038 11.2914 7.96663 11.2258L1.74163 6.643C1.7205 6.62732 1.6986 6.61272 1.67601 6.59925C1.64203 6.57883 1.61392 6.54997 1.5944 6.51547C1.57489 6.48097 1.56463 6.44201 1.56463 6.40237C1.56463 6.36273 1.57489 6.32377 1.5944 6.28927C1.61392 6.25477 1.64203 6.22591 1.67601 6.2055C1.69861 6.19203 1.72051 6.17743 1.74163 6.16175L7.96663 1.57893ZM9.84476 9.97425C9.95101 9.97425 10.0682 9.97893 10.1932 9.98362C10.8713 10.0149 11.8088 10.118 12.8494 10.4071C14.9213 10.9821 17.3744 12.2852 19.0057 15.2196C19.0939 15.378 19.2345 15.5007 19.4033 15.5669C19.5721 15.633 19.7587 15.6383 19.931 15.582C20.1033 15.5257 20.2507 15.4112 20.3478 15.2581C20.445 15.105 20.4859 14.9229 20.4635 14.743C19.7385 8.94612 17.5166 5.89612 15.0573 4.33675C13.1119 3.10237 11.1088 2.86487 9.84476 2.81956V1.78831C9.8449 1.46654 9.75819 1.1507 9.59377 0.874112C9.42935 0.597524 9.19333 0.370446 8.91059 0.216838C8.62785 0.0632294 8.3089 -0.0112126 7.98738 0.00136679C7.66585 0.0139462 7.35369 0.11308 7.08382 0.288309L0.843195 4.88206C0.585195 5.0431 0.372424 5.26716 0.224911 5.53313C0.0773993 5.7991 0 6.09823 0 6.40237C0 6.70651 0.0773993 7.00564 0.224911 7.27161C0.372424 7.53758 0.585195 7.76164 0.843195 7.92268L7.08382 12.5164C7.35369 12.6917 7.66585 12.7908 7.98738 12.8034C8.3089 12.816 8.62785 12.7415 8.91059 12.5879C9.19333 12.4343 9.42935 12.2072 9.59377 11.9306C9.75819 11.654 9.8449 11.3382 9.84476 11.0164V9.97425Z" fill="#8A8A8A"/>
+                </svg>
+              </div>
               <div v-if="message.type === 'text'" class="msg-text">
                 <span>{{message.text}}</span>
               </div>
@@ -76,7 +81,7 @@
             </div>
           </div>
         </div>
-        <div :class="message.received ? {'status received': true} : {'status sent': true}">
+        <div v-if="!(action === 'reply' && id === index)" :class="message.received ? {'status received': true} : {'status sent': true}">
           <span class="status">
             <span class="time">{{message.time}}</span>
             <span v-if="message.checked1">
@@ -112,7 +117,18 @@
     </div>
   </div>
   <div class="chatboxbottom">
-    <template v-if="chatmode === 'message' && mode === 'chats' && action === ''">
+    <div v-if="action === 'reply'" class="floating">
+      <div class="floating-text">
+        <span class="floating-text-name">Jane Fisher</span>
+        <span class="floating-text-msg">Then let's go together if you succeed!</span>
+      </div>
+      <span class="close-btn action" @click="closeReply">
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 1L1 13M13 13L1 1L13 13Z" stroke="#9A9A9A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </div>
+    <template v-if="chatmode === 'message' && mode === 'chats'">
       <div class="chatboxbottom-msg-left">
         <span class="icon action">
           <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -320,16 +336,29 @@ export default {
     }
   },
   methods: {
+    init() {
+      this.action = ''
+      this.chatmode = 'message'
+      this.newMessage = ''
+      this.selected.clear()
+      this.id = -1 
+    },
     openMsgMenu(e, id) {
+      this.action = ''
       this.id = id;
       e.stopPropagation();
       e.preventDefault();
       this.$refs.msgMenu.open(e)
     },
     openMsgBoxMenu(e) {
+      this.action = ''
       this.id = -1;     
       e.preventDefault();
       this.$refs.msgBoxMenu.open(e)
+    },
+    closeReply() {
+      this.action = ''
+      this.id = -1
     },
     contextAction(e, action) {
       this.action = action;
@@ -343,6 +372,9 @@ export default {
       if(action === 'reply') {
         console.log(action)
         console.log(e, action, this.id)
+        this.$refs.msgBoxMenu.close()
+        this.$refs.msgMenu.close()
+        return
       }
       if(action === 'copy') {
         console.log(action)
@@ -383,6 +415,10 @@ export default {
     },
     backToCall() {
       this.$store.commit('setModal', 'videocall')
+    },
+    goBack() {
+      this.action = ''
+      this.id = -1
     }
   },
   mounted() {
@@ -414,7 +450,7 @@ div.msgbox {
     margin-bottom: 28px;
     div.message-upper {
       display: flex;
-      align-items: center;
+      align-items: center;  
       span.select-check {
         min-width: 14px;
         height: 14px;
@@ -442,6 +478,7 @@ div.msgbox {
           border-radius: 26px;
           position: relative;
           display: inline;
+          position: relative;
           div.msg-text {
             span {
               font-size: 15px;
@@ -471,8 +508,14 @@ div.msgbox {
               }
             }
           }
+          div.reply {
+            position: absolute;
+            bottom: -11px;
+            left: -12px;
+          }
         }
       }
+
     }
     div.status {
       display: flex;
@@ -618,7 +661,7 @@ div.msgbox {
     }
 }
 div.chatboxbottom {
-  height: 57px;
+  min-height: 57px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -626,6 +669,7 @@ div.chatboxbottom {
   border-top: 1px solid #C1C1C1;
   padding: 5px 30px;
   font-size: 14px;
+  position: relative;
   div.chatboxbottom-msg-left {
     display: flex;
     align-items: center;
@@ -791,6 +835,40 @@ div.chatboxbottom {
     }
     span.record {
       margin-right: 24px
+    }
+  }
+  div.floating {
+    position: absolute;
+    top: -41px;
+    background: #FFEDED;
+    height: 40px;
+    width: 100%;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    div.floating-text {
+      display: flex;
+      flex-direction: column;
+      span.floating-text-name {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 14px;
+        color: #000000;
+        margin-bottom: 1px;
+      }
+      span.floating-text-msg {
+        font-size: 12px;
+        line-height: 14px;
+        color: #4F4F4F;
+      }
+    }
+    span.close-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 12px;
     }
   }
 }
