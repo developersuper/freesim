@@ -50,28 +50,28 @@ export default {
             event: 'logout'
           },
           { text: null },
-          { text: "Close Window",  hotkey: "Crtl + W", event: ''}
+          { text: "Close Window",  hotkey: "Ctrl + W", event: ''}
         ] },
         { text: "Edit", menu: [
-          { text: "Undo", hotkey:"Crtl + Z", event: '' },
-          { text: "Redo", hotkey:"Crtl + Y", event: '' },
+          { text: "Undo", hotkey:"Ctrl + Z", event: '' },
+          { text: "Redo", hotkey:"Ctrl + Y", event: '' },
           { text: null },
-          { text: "Cut", hotkey:"Crtl + X", event: '' },
-          { text: "Copy", hotkey:"Crtl + C", event: '' },
-          { text: "Paste", hotkey:"Crtl + V", event: '' },
+          { text: "Cut", hotkey:"Ctrl + X", event: '' },
+          { text: "Copy", hotkey:"Ctrl + C", event: '' },
+          { text: "Paste", hotkey:"Ctrl + V", event: '' },
           { text: "Delete", hotkey:"" , event: ''},
           { text: null },
-          { text: "Select All",  hotkey: "Crtl + A", event: ''}
+          { text: "Select All",  hotkey: "Ctrl + A", event: ''}
         ] },
         { text: "View", menu: [
-          { text: "Reload", hotkey:"Crtl + R", event: '' },
+          { text: "Reload", hotkey:"Ctrl + R", event: '' },
           { text: null },
-          { text: "Actual Size", hotkey:"Crtl + 0", event: '' },
-          { text: "Zoom In", hotkey:"Crtl + +", event: '' },
-          { text: "Zoom Out", hotkey:"Crtl + -", event: '' },
+          { text: "Actual Size", hotkey:"Ctrl + 0", event: '' },
+          { text: "Zoom In", hotkey:"Ctrl + +", event: '' },
+          { text: "Zoom Out", hotkey:"Ctrl + -", event: '' },
         ] },        
         { text: "Windows", menu: [
-          { text: "Minimize", hotkey:"Crtl + Z", event: '' },
+          { text: "Minimize", hotkey:"Ctrl + Z", event: '' },
           { text: "Zoom", hotkey:"" },
         ] },
         { text: "Help", menu: [

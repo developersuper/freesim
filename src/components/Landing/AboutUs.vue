@@ -36,7 +36,8 @@ export default {
     flex: 1;
     text-align: center;
     img {
-      max-width: 37.5vw;
+      max-width: 540.95px;
+      height: 480px;
     }
   }
   div.img-2 {
@@ -79,6 +80,7 @@ export default {
       img {
         max-width: 500px;
         width: 100%;
+        height: unset;
       }
     }
     div.right {

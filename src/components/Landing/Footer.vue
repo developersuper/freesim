@@ -2,14 +2,14 @@
   <div class="footer">
     <div class="footer-love">
       <span class="title">Make with Love</span>
-      <span class="subtitle">in Vancouver, British Columbia.</span>
+      <span class="subtitle">in US, Canada.</span>
     </div>
     <div class="footer-phonenum">
-      <span><img :src="require('@/assets/images/icons/phone.png')" alt="">(484)424-9683</span>
+      <span><img :src="require('@/assets/images/icons/phone.png')" alt="">484-424-9683</span>
     </div>
     <div class="footer-address">
       <span class="title">Address:</span>
-      <span class="address">10691 Shellbridge Way,<br>Richmond, BC V6X 2W8</span>
+      <span class="address">3524 Silverside Road Suite 35B,<br>Wilmington, Delaware, 19810</span>
     </div>
   </div>
 </template>

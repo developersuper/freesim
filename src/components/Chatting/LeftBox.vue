@@ -5,7 +5,16 @@
         :voicemail="4" 
         @onMode="setMode"
       />
-    <search-bar />
+    <search-bar         
+      :ranges="chats.map(chat => {
+        return {
+          name: chat.name,
+          avatar: chat.avatar
+        }
+      })"
+      :value="searchValue"
+      @value="setSearchValue"
+    />
     <chats />
   </div>
 </template>
@@ -25,14 +34,18 @@ export default {
   },
   data() {
     return {
+      searchValue: ''
     }
   },
   computed: {
-    ...mapGetters(['mode'])
+    ...mapGetters(['mode', 'chats'])
   },
   methods: {
     setMode(mode) {
       this.$store.commit('setMode', mode)
+    },
+    setSearchValue($event) {
+      this.searchValue = $event
     }
   }
 }

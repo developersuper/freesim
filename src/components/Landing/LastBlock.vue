@@ -26,7 +26,7 @@ export default {
 
 <style lang="scss" scoped>
 .lastblock {
-  padding: 120px 10.208vw;
+  padding: 120px 135px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -36,8 +36,12 @@ export default {
       display: block;
       margin-bottom: 50px;
       font-weight: bold;
-      font-size: 3.5vw;
+      font-size: 50px;
       color: #515151;
+      max-width: 550px;
+      letter-spacing: -0.1px;
+      // max-height: 160px;
+      line-height: 107.99%;
     }
     span.subtitle {
       display: block;
@@ -46,14 +50,14 @@ export default {
       color: #787878;
     }
     img.google-play {
-      width: 17vw;
-      height: 4.95vw;
+      width: 240px;
+      height: 71.2118px;
     }
   }
   div.img img {
     display: flex;
     justify-content: flex-end;
-    max-width: 39.1vw;
+    max-width: 534px;
     width: 100%;
   }
 }
@@ -62,6 +66,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding: 120px 10.208vw;
     div.left {
       span.title {
         font-size: 40px;
@@ -73,7 +78,7 @@ export default {
       }
       img.google-play {
         width: 170px;
-        height: 45px;
+        height: 50px;
       }
     }
     div.img{
@@ -81,8 +86,8 @@ export default {
       display: flex;
       justify-content: flex-end;
       img {
-        max-width: 39.1vw;
-        width: 100%;
+      max-width: 39.1vw;
+      width: 100%;
       }
     } 
   }

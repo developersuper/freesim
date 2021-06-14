@@ -6,6 +6,7 @@
       :hideToggle="true" 
       :collapsed="collapsed"
       :width="'196px'" 
+      :widthCollapsed="'66px'"
       @click="onClickSidebar"
       @item-click="onClickItem"
     >
@@ -75,7 +76,7 @@ export default {
         },
         {
           href: '/phonesandplanes',
-          title: 'Phones & Planse',
+          title: 'Phones & Plans',
           icon: {
             element: 'img',
             class: 'sidebar-icon',
@@ -107,7 +108,7 @@ export default {
           }
         },
         {
-          href: '/signin',
+          href: '/logout',
           title: 'Sign Out',
           icon: {
             element: 'img',

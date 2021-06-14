@@ -75,6 +75,7 @@ div.settingsbar {
 }
 ul.custom-chatboxheadersettingmenu {
   box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.25);
+  width: 138px !important;
   li {
     color: #949494;
     font-size: 12px;

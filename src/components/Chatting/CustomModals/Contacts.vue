@@ -48,7 +48,8 @@ div.contacts {
   height: 496px;
   div.tab-header {
     widows: 100%;
-    height: 50px;
+    height: 40px;
+    margin-top: 4px;
     display: flex;
     justify-content: space-between;
     align-items: stretch;

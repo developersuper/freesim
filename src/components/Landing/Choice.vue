@@ -34,12 +34,12 @@ export default {
           subtitle: 'FreeSIM let’s you get a professional presense with for totally<br> FREE of charge.'
         },
        {
-          iconUrl: require('@/assets/images/card-second.png'),
+          iconUrl: require('@/assets/images/card-third.png'),          
           title: 'Give yourselves<br>a bit of privacy',
           subtitle: 'Everyone has some secret that they want to keep away from their normal phone line.'
         },
         {
-          iconUrl: require('@/assets/images/card-third.png'),
+          iconUrl: require('@/assets/images/card-second.png'),
           title: 'Separate your contacts',
           subtitle: 'Use FreeSIM number to move contacts to different<br>channel to reach you at.'
         },
@@ -79,7 +79,7 @@ export default {
       display: flex;
       flex-direction: column;;
       align-items: center;
-      max-width: 25.7vw;
+      max-width: 343px;
       width: 100%;
       padding: 50px 3.5vw;
       box-shadow: 0px 4px 40px -2px rgba(0, 0, 0, 0.15);

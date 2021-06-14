@@ -14,7 +14,11 @@
         <img :src="chatter.avatar" alt="" class="avatar">
         <span class="title">{{chatter.name}}</span>
       </div>
-      <search-bar class="search-bar" :value="chatSearch" @value="setChatSearch"/>
+      <search-bar 
+        class="search-bar" 
+        :value="chatSearch" 
+        @value="setChatSearch"
+      />
       <chat-box-header-settings-bar class="settings-bar"/>
     </template>
     <span class="back-btn action" @click="goLeft">
@@ -44,7 +48,7 @@ export default {
       if(this.$store.getters.activechatter === -1) return null
       return this.$store.getters.chats[this.$store.getters.activechatter]
     },
-    ...mapGetters(['user', 'chatSearch']),
+    ...mapGetters(['user', 'chatSearch', 'chats']),
   },
   methods: {
     setChatSearch(value) {
@@ -94,7 +98,7 @@ div.chatboxheader {
     display: flex;
     align-items: center;
     margin: auto 24px;
-    max-width: 175px;
+    max-width: 170px;
     width: 100%;
     span.title {
       margin-left: 18px;
