@@ -70,7 +70,7 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    column-gap: 30px;
+    column-gap: 26px;
     row-gap: 50px;
     width: 100%;
     margin: auto;
