@@ -80,6 +80,7 @@ ul.custom-chatboxheadersettingmenu {
     color: #949494;
     font-size: 12px;
     padding: 10px 15px;
+    margin: 0px;
   }
 }
 </style>

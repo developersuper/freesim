@@ -57,7 +57,7 @@ export default {
   div.img img {
     display: flex;
     justify-content: flex-end;
-    max-width: 534px;
+    max-width: 564px;
     width: 100%;
   }
 }
@@ -86,8 +86,8 @@ export default {
       display: flex;
       justify-content: flex-end;
       img {
-      max-width: 39.1vw;
-      width: 100%;
+        max-width: 39.1vw;
+        width: 100%;
       }
     } 
   }
