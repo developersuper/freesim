@@ -1,8 +1,8 @@
 <template>
   <div class="footer">
     <div class="footer-love">
-      <span class="title">Make with Love</span>
-      <span class="subtitle">in US, Canada.</span>
+      <span class="title">Free SIM  phone service</span>
+      <span class="subtitle">in US and Canada</span>
     </div>
     <div class="footer-phonenum">
       <span><img :src="require('@/assets/images/icons/phone.png')" alt="">484-424-9683</span>
