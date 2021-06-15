@@ -270,7 +270,7 @@ div.settings {
       display: flex;
       align-items: center;
       position: absolute;
-      top: 50px;
+      top: 20px;
       left: 10px;
       font-size: 20px;
       color: #FF7777;
@@ -430,6 +430,7 @@ div.settings {
         position: relative;
         display: flex;
         padding: 20px;
+        padding-top: 50px;
         justify-content: center;
         align-items: center;
         height: calc(100vh - 55px);
