@@ -429,7 +429,9 @@ export default {
 <style lang="scss" scoped>
 div.msgbox {
   position: relative;
-  height: calc(100% - 70px);
+  // height: calc(100% - 70px);
+  height: calc(var(--vh, 1vh) * 100 - 70px);
+  -webkit-height: calc(var(--vh, 1vh) * 100 - 70px);
   overflow-y: auto;
   padding: 18px 30px;
   div.msgbox-day {
@@ -661,7 +663,9 @@ div.msgbox {
 }
 @media screen and (max-width: 900px) {
     div.msgbox {
-      height: calc(100% - 168px);
+      // height: calc(100% - 168px);
+      height: calc(var(--vh, 1vh) * 100 - 168px);
+      -webkit-height: calc(var(--vh, 1vh) * 100 - 168px);
     }
 }
 div.chatboxbottom {

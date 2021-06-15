@@ -85,7 +85,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 div.desktoplayout {
-  height: 100vh;
+  //height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  -webkit-height: calc(var(--vh, 1vh) * 100);
   div.toolbar {
     div.topbar {
       display: flex;
