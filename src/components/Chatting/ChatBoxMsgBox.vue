@@ -876,4 +876,12 @@ div.chatboxbottom {
     }
   }
 }
+// @media screen and (max-width: 374px) {
+//   div.msgbox {
+//     position: relative;
+//     height: calc(100% - 70px);
+//     overflow-y: auto;
+//     padding: 18px 5px;
+//   }
+// }
 </style>

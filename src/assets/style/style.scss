@@ -15,6 +15,13 @@ a {
   opacity: 0.7;
   cursor: pointer;
 }
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+html {
+  height: -webkit-fill-available;
+}
 span.action-title {
   font-size: 14px;
   color: #FF7777;
