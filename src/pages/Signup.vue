@@ -12,18 +12,18 @@
           <span v-if="emailStatus === 'required'" class="error">Name is required</span>
         </div>
         <div class="input-block">
-          <input type="text" name="email" id="email" required spellcheck="false" autocomplete="off" :style="emailStyle" v-model="email">
-          <span class="placeholder" :style="emailStatus === 'required' ? {color: '#FF7777'} : {}">
-            Email
-          </span>
-          <span v-if="emailStatus === 'required'" class="error">Email is required</span>
-        </div>
-        <div class="input-block">
           <input type="password" name="email" id="email" required spellcheck="false" autocomplete="off" :style="emailStyle" v-model="email">
           <span class="placeholder" :style="emailStatus === 'required' ? {color: '#FF7777'} : {}">
             Password
           </span>
           <span v-if="emailStatus === 'required'" class="error">Password is required</span>
+        </div>
+        <div class="input-block">
+          <input type="text" name="email" id="email" required spellcheck="false" autocomplete="off" :style="emailStyle" v-model="email">
+          <span class="placeholder" :style="emailStatus === 'required' ? {color: '#FF7777'} : {}">
+            Email
+          </span>
+          <span v-if="emailStatus === 'required'" class="error">Email is required</span>
         </div>
         <div class="input-block">
           <input type="password" name="email" id="email" required spellcheck="false" autocomplete="off" :style="emailStyle" v-model="email">
