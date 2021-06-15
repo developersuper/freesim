@@ -2,9 +2,8 @@
 <desktop-layout>
   <template v-slot>
     <div class="auth-container">
-      <h1 class="auth-title">Create account</h1>
-      <h5 class="auth-subtitle">Already have an account? <router-link to="/signin"><span class="action" style="color: #ff7777;">Log In</span></router-link></h5>
-      <div class="auth-form">
+      <h1 class="auth-title" style="margin-bottom: 20px;">Create account</h1>
+      <div class="auth-form signup-form">
         <div class="input-block">
           <input type="text" name="email" id="email" required spellcheck="false" autocomplete="off" :style="emailStyle" v-model="email">
           <span class="placeholder" :style="emailStatus === 'required' ? {color: '#FF7777'} : {}">
@@ -33,6 +32,7 @@
           </span>
           <span v-if="emailStatus === 'required'" class="error">Confirm Password is required</span>
         </div>
+        <h5 class="auth-subtitle signup-subtitle">Already have an account? <router-link to="/signin"><span class="action" style="color: #00DE5E;">Sign In</span></router-link></h5>
         <div class="signup-btn-wrapper">
           <div class="auth-btn action" @click="goChatting">Sign Up</div>
         </div>
@@ -84,7 +84,7 @@ div.signup-btn-wrapper {
   width: 100%;
   justify-content: flex-end;
   margin-bottom: 30px;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 div.signup-with {
   display: flex;
@@ -97,5 +97,19 @@ div.signup-with {
     color: #EB5757;
     margin-bottom: 30px;
   }
+}
+div.signup-form {
+  display: grid;
+  flex-wrap: wrap;
+  max-width: 732px;
+  width: 100%;
+  grid-template-columns: auto auto;
+  column-gap: 21px;
+  padding: 0px 15px;
+}
+h5.signup-subtitle {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  line-height: 100%;
 }
 </style>
