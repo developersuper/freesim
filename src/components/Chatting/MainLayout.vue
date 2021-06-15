@@ -205,6 +205,7 @@ export default {
 div.main-layout {
   position: relative;
   display: flex;
+  width: 100%;
   // height: calc(100vh - 55px);
   height: calc(var(--vh, 1vh) * 100 - 55px);
   -webkit-height: calc(var(--vh, 1vh) * 100 - 55px);
