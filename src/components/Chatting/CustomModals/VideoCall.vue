@@ -110,6 +110,16 @@ div.videocall {
       border: 3px solid #FFFFFF;
     }
   }
+  @media screen and (max-width: 450px) {
+    div.videocall-user {
+      top: 30px;
+      right: 10px;
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
   div.controllerbar {
     display: flex;
     position: absolute;

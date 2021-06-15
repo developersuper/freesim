@@ -272,7 +272,7 @@ const state = {
   ],
   activechatter: 0,
   chatSearch: '',
-  modal: '',
+  modal: 'dialpad',
   contacts: [
     {
       name: 'Jane Fisher',

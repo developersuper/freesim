@@ -96,6 +96,12 @@ export default {
         margin-bottom: 35px;
       }
     }
+    @media screen and (max-width: 450px) {
+      .title {
+        font-size: 10vw;
+        margin-bottom: 35px;
+      }
+    }
     .subtitle {
       font-weight: 500;
       font-size: 25px;

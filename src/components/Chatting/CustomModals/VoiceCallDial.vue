@@ -407,9 +407,9 @@ div.voicecalldial {
     }
   }
 }
-@media screen and (max-width: 374px) {
+@media screen and (max-width: 375px) {
   div.voicecalldial {
-    max-height: 667px;
+    max-width: 100vw;
   }
 }
 </style>

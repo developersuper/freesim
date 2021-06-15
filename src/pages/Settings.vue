@@ -436,7 +436,6 @@ div.settings {
         position: relative;
         display: flex;
         padding: 20px;
-        padding-top: 50px;
         justify-content: center;
         align-items: center;
         // height: calc(100vh - 55px);
