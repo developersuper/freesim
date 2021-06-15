@@ -40,7 +40,9 @@ div.logout {
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  height: calc(100vh - 55px);
+  // height: calc(100vh - 55px);
+      height: calc(var(--vh, 1vh) * 100 - 55px);
+  -webkit-height: calc(var(--vh, 1vh) * 100 - 55px);
   input {
     outline: none;
     max-width: 340px;

@@ -664,8 +664,8 @@ div.msgbox {
 @media screen and (max-width: 900px) {
     div.msgbox {
       // height: calc(100% - 168px);
-      height: calc(var(--vh, 1vh) * 100 - 168px);
-      -webkit-height: calc(var(--vh, 1vh) * 100 - 168px);
+      height: calc(var(--vh, 1vh) * 100 - 222px);
+      -webkit-height: calc(var(--vh, 1vh) * 100 - 222px);
     }
 }
 div.chatboxbottom {

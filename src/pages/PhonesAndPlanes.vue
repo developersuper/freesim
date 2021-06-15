@@ -26,7 +26,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 div.phonesandplaneswrapper {
-  height: 100vh;
+  // height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  -webkit-height: calc(var(--vh, 1vh) * 100);
 }
 @media screen and (max-width: 1000) {
 div.phonesandplaneswrapper {

@@ -72,7 +72,9 @@ export default {
 }
 .modal-videocall {
   min-height: unset;
-  height: 100vh;
+  // height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+  -webkit-height: calc(var(--vh, 1vh) * 100);
   max-width: unset;
 }
 </style>

@@ -68,7 +68,9 @@ div.phonesandplanesbody {
 @media screen and (max-width: 1000px) {
 div.phonesandplanesbody {
   padding: 100px 10.208vw;
-  height: calc(100vh -100px);
+  // height: calc(100vh -100px);
+  height: calc(var(--vh, 1vh) * 100 - 100px);
+  -webkit-height: calc(var(--vh, 1vh) * 100 - 100px);
   div.phonesandplanesbody-left {
     max-width: 463px;
     width: 100%;

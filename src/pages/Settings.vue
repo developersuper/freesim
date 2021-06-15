@@ -229,7 +229,9 @@ export default {
 div.settings {
   display: flex;
   width: 100%;
-  height: calc(100vh - 55px);
+  // height: calc(100vh - 55px);
+  height: calc(var(--vh, 1vh) * 100 - 55px);
+  -webkit-height: calc(var(--vh, 1vh) * 100 - 55px);
   justify-content: space-between;
   position: relative;
   div.settings-leftpart {
@@ -264,7 +266,9 @@ div.settings {
     width: 100%;
     padding: 146px 10px 10px 135px;
     overflow-y: auto;
-    height: calc(100vh - 55px);
+    // height: calc(100vh - 55px);
+    height: calc(var(--vh, 1vh) * 100 - 55px);
+    -webkit-height: calc(var(--vh, 1vh) * 100 - 55px);
     position: relative;
     div.back-btn {
       display: flex;
@@ -424,7 +428,9 @@ div.settings {
       flex-wrap: wrap;
       div.settings-leftpart {
         max-width: unset;
-        height: calc(100vh - 55px);
+        // height: calc(100vh - 55px);
+        height: calc(var(--vh, 1vh) * 100 - 55px);
+        -webkit-height: calc(var(--vh, 1vh) * 100 - 55px);
       }
       div.settings-rightpart {
         position: relative;
@@ -433,7 +439,9 @@ div.settings {
         padding-top: 50px;
         justify-content: center;
         align-items: center;
-        height: calc(100vh - 55px);
+        // height: calc(100vh - 55px);
+        height: calc(var(--vh, 1vh) * 100 - 55px);
+        -webkit-height: calc(var(--vh, 1vh) * 100 - 55px);
         div.settings-body {
           width: 100%;
         }

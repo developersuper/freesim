@@ -86,7 +86,9 @@ export default {
 
 <style lang="scss" scoped>
 div.videocall {
-  height: calc(100vh - 55px);
+  // height: calc(100vh - 55px);
+  height: calc(var(--vh, 1vh) * 100 - 55px);
+  -webkit-height: calc(var(--vh, 1vh) * 100 - 55px);
   position: relative;
   div.videocall-client {
     height: 100%;
