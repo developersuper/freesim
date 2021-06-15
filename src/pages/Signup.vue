@@ -112,4 +112,15 @@ h5.signup-subtitle {
   margin-bottom: 50px;
   line-height: 100%;
 }
+@media screen and (max-width: 750px) {
+  div.signup-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 0px 15px;
+    max-width: 370px;
+    justify-content: center;
+  } 
+}
 </style>
