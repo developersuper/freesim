@@ -268,7 +268,9 @@ div.main-layout {
 }
 @media screen and (max-width: 733px) {
  div.main-layout {
+   width: 100%;
    div.main-box {
+     width: 100%;
      flex-wrap: wrap;
    }
  } 

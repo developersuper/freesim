@@ -61,9 +61,7 @@ export default {
   @media screen and (max-width: 733px) {
     div.left-box {
       max-width: unset;
+      width: 100%;
     }
-  }
-  @media screen and (max-width) {
-    
   }
 </style>
