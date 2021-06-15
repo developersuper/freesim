@@ -83,4 +83,12 @@ ul.custom-chatboxheadersettingmenu {
     margin: 0px;
   }
 }
+@media screen and (max-width: 400px) {
+  div.settingsbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 50px;
+  }
+}
 </style>

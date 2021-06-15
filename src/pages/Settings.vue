@@ -2,19 +2,25 @@
   <desktop-layout>
     <template v-slot>
       <div class="settings">
-        <div class="settings-leftpart">
+        <div v-if="viewport !== 'mobile' || window === 0" class="settings-leftpart">
           <div class="settings-lists">
             <span class="settings-title">Settings</span>
             <span 
               v-for="setting in settings" 
               :class="selected === setting ? {'settings-list-active': true} : {'settings-list action': true}" 
               :key="setting" 
-              @click="selected = setting">
+              @click="selectSetting(setting)">
               {{setting}}
             </span>
           </div>
         </div>
-        <div class="settings-rightpart">
+        <div v-if="viewport !== 'mobile' || window === 1" class="settings-rightpart">
+          <div v-if="viewport === 'mobile'" class="back-btn" @click="goBack">
+            <svg width="30" height="30" viewBox="0 0 14 24" fill="#FF7777" xmlns="http://www.w3.org/2000/svg">
+             <path d="M12 2L2 12L7 17L12 22" stroke="white" stroke-width="3" stroke-linejoin="round"/>
+            </svg>
+            Back
+          </div>
           <div class="settings-body">
             <div v-if="selected==='Account'" class="account">
               <span class="settings-body-title">Account</span>
@@ -168,11 +174,22 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import DesktopLayout from '../components/Layout/DesktopLayout.vue'
 export default {
   name: 'Settings',
   components: {
     DesktopLayout,
+  },
+  computed: {
+    ...mapGetters(['viewport']),
+  },
+  mounted() {
+    if(this.viewport === 'mobile') {
+      this.selected = -1
+    }else {
+      this.selected = 0
+    }
   },
   data() {
     return {
@@ -191,11 +208,19 @@ export default {
       desktop: true,
       email: false,
       usevoicemail: true,
+      window: 0,
     }
   },
   methods: {
     onClose() {
       this.$router.push('./chatting')
+    },
+    goBack() {
+      this.window = 0;
+    },
+    selectSetting(setting) {
+      this.selected = setting
+      this.window = 1
     }
   }
 }
@@ -239,6 +264,17 @@ div.settings {
     width: 100%;
     padding: 146px 10px 10px 135px;
     overflow-y: auto;
+    height: calc(100vh - 55px);
+    position: relative;
+    div.back-btn {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 50px;
+      left: 10px;
+      font-size: 20px;
+      color: #FF7777;
+    }
     span.settings-body-title {
       display: block;
       font-size: 30px;
@@ -388,7 +424,7 @@ div.settings {
       flex-wrap: wrap;
       div.settings-leftpart {
         max-width: unset;
-        height: 100vh;
+        height: calc(100vh - 55px);
       }
       div.settings-rightpart {
         position: relative;
@@ -396,7 +432,7 @@ div.settings {
         padding: 20px;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        height: calc(100vh - 55px);
         div.settings-body {
           width: 100%;
         }

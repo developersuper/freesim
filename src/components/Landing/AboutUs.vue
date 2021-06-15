@@ -58,11 +58,12 @@ export default {
         margin-bottom: 3.5vw;
       }
       .subtitle {
-        font-size: 1.7vw;
+        font-size: 25px;
         display: flex;
         align-items: center;
         color: #787878;
         max-width: 460px;
+        min-width: 350px;
       }
     }
   }
@@ -92,7 +93,9 @@ export default {
           margin-bottom: 35px;
         }
         .subtitle {
-          font-size: 20px;
+          font-size: 4.3vw;
+          max-width: unset;
+          min-width: unset;
         }
       }
     }

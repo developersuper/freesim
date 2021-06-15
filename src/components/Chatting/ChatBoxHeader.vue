@@ -132,4 +132,26 @@ div.chatboxheader {
     }
   }
 }
+@media screen and (max-width: 400px) {
+  div.chatboxheader {
+    flex-wrap: wrap;
+    height: 111px;
+    padding-top: 14px;
+    padding-bottom: 0;
+    position: relative;
+    div.client-info {
+      width: 100%;
+    }
+    .search-bar {
+      max-width: 80px;
+      width: 100%;
+      margin-left: 24px;
+      margin-top: 2px;
+      justify-content: flex-start !important;
+    }
+    .settings-bar {
+      margin-left: 5px;
+    }
+  }
+}
 </style>

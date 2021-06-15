@@ -10,6 +10,7 @@ export default {
   },
   created() {
     window.addEventListener('resize', this.onResize)
+    this.onResize()
   },
   beforeUnmount() {
     window.removeEventListener('resize', this.onResize)
