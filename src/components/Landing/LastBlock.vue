@@ -69,7 +69,7 @@ export default {
     padding: 120px 10.208vw;
     div.left {
       span.title {
-        font-size: 40px;
+        font-size: 28px;
       }
       span.subtitle {
         font-size: 18px;
