@@ -262,6 +262,7 @@ div.main-layout {
     // flex-wrap: wrap;
   }
   div.adv-box {
+    display: none;
     max-width: 286px;
     width: 100%;
   }
