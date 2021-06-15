@@ -660,6 +660,35 @@ div.msgbox {
       top: 200px;
     }
   }
+  @media screen and (max-width: 500px) {
+    div.chatscalling {
+      top: 200px;
+      right: 10px;
+      div.chatscalling-inner {
+        width: 100px;
+        height: 100px;
+        min-width: 100px;
+        img {
+          width: 100px;
+          height: 100px;
+          min-width: 100px;
+        }
+        span.endcall-btn {
+          right: 0px;
+          svg {
+            width: 40px;
+            height: 40px;
+          }
+        }
+      }
+      div.chatscalling-inner:hover {
+        div.chatscall-hover {
+          font-size: 15px;
+          padding-bottom: 15px;
+        }
+      }
+    }
+  }
 }
 @media screen and (max-width: 900px) {
     div.msgbox {

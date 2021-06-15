@@ -4,7 +4,7 @@ import actions from './actions'
 
 const state = {
   mode: 'chats',
-  call: false,
+  call: true,
   chats: [
     {
       name: 'Jane Fisher',
@@ -272,7 +272,7 @@ const state = {
   ],
   activechatter: 0,
   chatSearch: '',
-  modal: 'dialpad',
+  modal: '',
   contacts: [
     {
       name: 'Jane Fisher',
