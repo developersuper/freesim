@@ -71,7 +71,7 @@ export default {
     flex-wrap: wrap;
     justify-content: space-between;
     column-gap: 26px;
-    row-gap: 50px;
+    // row-gap: 50px;
     width: 100%;
     margin: auto;
     div.card {
@@ -142,16 +142,18 @@ export default {
   @media screen and (max-width: 865px) {
     div.cards {
       flex-direction: column !important;
+      // padding-bottom: 0px;
       div.card {
         max-width: 400px;
         margin: auto;
+        margin-bottom: 50px;
       }
     }
   }
 }
 @media screen and (max-width: 1000px) {
   .choice {
-    padding: 80px 10.208vw 100px;
+    padding: 80px 10.208vw 0px;
   }
 }
 </style>
