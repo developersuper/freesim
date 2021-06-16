@@ -83,11 +83,12 @@ export default {
       }
     }
     div.img{
+      margin-top: 50px;
       width: 100%;
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
       img {
-        max-width: 39.1vw;
+        max-width:  50vw;
         width: 100%;
       }
     } 
