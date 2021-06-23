@@ -3,7 +3,7 @@
     <div class="modal-mask" @click="closeModal">
       <div class="modal-wrapper">
         <div 
-          :class="modal === 'videocall' ? {'modal-container modal-videocall': true} : {'modal-container': true}" 
+          :class="modalContainer" 
           @click.stop=""
         >
           <slot>body</slot>
@@ -24,6 +24,15 @@ export default {
   },
   computed: {
     ...mapGetters(['modal']),
+    modalContainer() {
+      if(this.modal === 'videocall'){
+        return 'modal-container videocall'
+      }
+      if(this.modal === 'logoutfromalldevices') {
+        return 'modal-container logoutfromalldevices'
+      }
+      return 'modal-container'
+    }
   },
   data() {
     return {
@@ -70,11 +79,16 @@ export default {
   transition: all 0.3s ease;
   font-family: Helvetica, Arial, sans-serif;
 }
-.modal-videocall {
+.videocall {
   min-height: unset;
   // height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
   -webkit-height: calc(var(--vh, 1vh) * 100);
   max-width: unset;
+}
+.logoutfromalldevices {
+  max-width: 416px;
+  min-height: unset;
+  height: 275px;
 }
 </style>

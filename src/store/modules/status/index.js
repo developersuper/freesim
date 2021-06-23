@@ -4,11 +4,15 @@ import actions from './actions'
 
 const state = {
   mode: 'chats',
-  call: true,
+  call: false,
   chats: [
     {
       name: 'Jane Fisher',
       avatar: require('@/assets/images/user.png'), 
+      fav: true,
+      mobile: '0223122123',
+      lastView: 'online',
+      blocked: true,
       messages: [
         {
           type: 'text',
@@ -94,6 +98,10 @@ const state = {
     {
       name: 'Adam Brogy',
       avatar: require('@/assets/images/user.png'),
+      fav: true,
+      mobile: '0223122123',
+      lastView: 'online',
+      blocked: true,
       messages: [{
         type: 'text',
         text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
@@ -107,6 +115,10 @@ const state = {
     {
       name: 'Luisa Simpson',
       avatar: require('@/assets/images/user.png'),
+      fav: false,
+      mobile: '0223122123',
+      lastView: 'was 22:11',
+      blocked: true,
       messages: [{
         type: 'text',
         text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
@@ -120,6 +132,10 @@ const state = {
     {
       name: 'Martin Davids',
       avatar: require('@/assets/images/user.png'),
+      fav: false,
+      mobile: '0223122123',
+      lastView: 'was 22:11',
+      blocked: false,
       messages: [{
         type: 'text',
         text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
@@ -133,6 +149,10 @@ const state = {
     {
       name: 'Stive Amstrong',
       avatar: require('@/assets/images/user.png'),
+      fav: false,
+      mobile: '0223122123',
+      lastView: 'was 22:11',
+      blocked: false,
       messages: [{
         type: 'text',
         text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
@@ -146,6 +166,10 @@ const state = {
     {
       name: 'Jane Fisher',
       avatar: require('@/assets/images/user.png'), 
+      fav: false,
+      mobile: '0223122123',
+      lastView: 'was 22:11',
+      blocked: false,
       messages: [{
         type: 'text',
         text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
@@ -159,6 +183,10 @@ const state = {
     {
       name: 'Adam Brogy',
       avatar: require('@/assets/images/user.png'),
+      fav: false,
+      mobile: '0223122123',
+      blocked: false,
+      lastView: 'was 22:11',
       messages: [{
         type: 'text',
         text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
@@ -172,6 +200,10 @@ const state = {
     {
       name: 'Luisa Simpson',
       avatar: require('@/assets/images/user.png'),
+      fav: false,
+      mobile: '0223122123',
+      lastView: 'was 22:11',
+      blocked: false,
       messages: [{
         type: 'text',
         text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
@@ -185,6 +217,10 @@ const state = {
     {
       name: 'Martin Davids',
       avatar: require('@/assets/images/user.png'),
+      fav: false,
+      mobile: '0223122123',
+      lastView: 'was 22:11',
+      blocked: false,
       messages: [{
         type: 'text',
         text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
@@ -198,6 +234,10 @@ const state = {
     {
       name: 'Stive Amstrong',
       avatar: require('@/assets/images/user.png'),
+      fav: false,
+      mobile: '0223122123',
+      lastView: 'was 22:11',
+      blocked: false,
       messages: [{
         type: 'text',
         text: 'If we go to the market tomorrow, we need to see all the fruits that are sold there, I really love citrus fruits! I want to buy a lot and teach you to eat so that you would be healthy!',
@@ -290,10 +330,10 @@ const state = {
     },
     {
       name: 'Martin Davids',
-      fav: false,
       avatar: require('@/assets/images/user.png'),
+      fav: false,
       mobile: '0223122123',
-      lastView: 'was 22:11'
+      lastView: 'was 22:11',
     },
     {
       name: 'Stiv Amstrong',

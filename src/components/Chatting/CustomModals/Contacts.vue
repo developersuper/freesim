@@ -8,8 +8,8 @@
       <span class="action" @click="addContact">Add Contact</span>
     </div>
     <div class="tab-body">
-      <template v-for="(contact, index) in (tab === 'all' ? contacts : contacts.filter(item => item.fav))" :key="index">
-        <contact-item :item="contact"></contact-item>
+      <template v-for="(contact, index) in (tab === 'all' ? chats : chats.filter(item => item.fav))" :key="index">
+        <contact-item :item="contact" @click="goChat(index)"></contact-item>
       </template>
     </div>
   </div>
@@ -25,7 +25,7 @@ export default {
     ContactItem,
   },
   computed: {
-    ...mapGetters(['contacts'])
+    ...mapGetters(['chats'])
   },
   data() {
     return {
@@ -38,6 +38,11 @@ export default {
     },
     addContact() {
       this.$store.commit('setModal', 'addcontact')
+    },
+    goChat(index) {
+      this.$store.commit('setModal', '')
+      this.$store.commit('setMode', 'chats')
+      this.$store.commit('setActiveChatter', index)
     }
   }
 }

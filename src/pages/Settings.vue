@@ -1,4 +1,16 @@
 <template>
+  <modal>
+    <template v-slot>
+      <div v-if="modal === 'logoutfromalldevices'" class="logoutmodal">
+        <span class="title">Log Out from all Devices</span>
+        <span class="desc">This will log you out of Free SIM from every device you’re currently logged in on.</span>
+        <div class="btns">
+          <span class="cancel action" @click="clickButton('cancel')">Cancel</span>
+          <span class="logout action" @click="clickButton('logout')">Log Out</span>
+        </div>
+      </div>
+    </template>
+  </modal>
   <desktop-layout>
     <template v-slot>
       <div class="settings">
@@ -116,7 +128,7 @@
                 <span class="messaging-btn action">Save</span>
               </div>
             </div>
-            <div v-if="selected==='Calling'" class="calling">
+            <div v-if="selected==='Calling' && blockedNumbers === false" class="calling">
               <span class="settings-body-title">Calling</span>
               <div class="radio-input action" @click="usevoicemail = !usevoicemail">
                 <span class="custom-radio">
@@ -127,7 +139,7 @@
                   <span class="radio-input-text-subtitle">Send missed calls to voicemail</span>
                 </div>
               </div>
-              <div class="radio-input">
+              <div class="radio-input action" @click="blockedNumbers=true">
                 <div class="radio-input-text">
                   <span class="radio-input-text-title">Blocked numbers</span>
                   <span class="radio-input-text-subtitle">There are no blocked numbers</span>
@@ -145,7 +157,7 @@
                   <span>Windows - Chrome Dev</span>
                   <span class="action action-title">Today at 8:30 AM</span>
                 </div>
-                <span class="action action-title">Log out</span>
+                <span class="action action-title" @click="logout">Log out</span>
               </div>
               <div class="securitylogin-activity">
                 <div class="securitylogin-activity-leftpart">
@@ -159,6 +171,24 @@
               <span class="legalandprivacy-items action">Privacy Policy</span>
               <span class="legalandprivacy-items action">Terms of Conditions</span>
               <!-- <span class="legalandprivacy-items action">"2G Fair Use Policy" for free SIM</span> -->
+            </div>
+            <div v-if="blockedNumbers===true">
+              <span class="settings-body-title">Blocked numbers</span>
+              <div class="blockednumbers">
+                <div 
+                  v-for="(chat, index) in chats"
+                  :key="index"
+                  class="radio-input action blockednumbers-item"
+                  @click="usevoicemail = !usevoicemail">
+                  <div class="userpart">
+                    <img :src="chat.avatar" alt="">
+                    <span>{{chat.name}}</span>
+                  </div>
+                  <span class="custom-radio" @click="setBlockedNumber(index)">
+                    <span :style="{display: chat.blocked ? 'block' : 'none'}"></span>
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -175,20 +205,23 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import Modal from '@/components/Layout/Modal'
 import DesktopLayout from '../components/Layout/DesktopLayout.vue'
 export default {
   name: 'Settings',
   components: {
     DesktopLayout,
+    Modal,
   },
   computed: {
-    ...mapGetters(['viewport']),
+    ...mapGetters(['viewport', 'chats', 'modal']),
   },
   mounted() {
     if(this.viewport === 'mobile') {
-      this.selected = -1
+      this.selected = null
     }else {
-      this.selected = 0
+      this.selected = 'Account'
+      this.blockedNumbers = false
     }
   },
   data() {
@@ -209,6 +242,7 @@ export default {
       email: false,
       usevoicemail: true,
       window: 0,
+      blockedNumbers: false,
     }
   },
   methods: {
@@ -220,7 +254,27 @@ export default {
     },
     selectSetting(setting) {
       this.selected = setting
+      this.blockedNumbers = false
       this.window = 1
+    },
+    setBlockedNumber(index) {
+      this.$store.dispatch('setChats', this.chats.map((item, idx) => {
+        if(idx === index) {
+          return {
+            ...item,
+            blocked: !item.blocked
+          }
+        }else {
+          return item
+        }
+      }))
+    },
+    logout() {
+      this.$store.commit('setModal', 'logoutfromalldevices')
+    },
+    clickButton(btnName) {
+      console.log(btnName)
+      this.$store.commit('setModal', '')
     }
   }
 }
@@ -377,6 +431,35 @@ div.settings {
         }
       }
     }
+    div.blockednumbers {
+      max-height: calc(var(--vh, 1vh) * 60);
+      -webkit-max-height: calc(var(--vh, 1vh) * 60);
+      overflow-y: auto;
+      max-width: 400px;
+    }
+    div.blockednumbers-item {
+      max-width: 375px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      div.userpart {
+        display: flex;
+        align-items: center;
+        img {
+          width: 45px;
+          height: 45px;
+          border-radius: 100%;
+          margin-right: 15px;
+        }
+        span {
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 19px;
+          color: #000000;
+        }
+      }
+    }
     div.securityandlogin {
       max-width: 483px;
       width: 100%;
@@ -421,6 +504,57 @@ div.settings {
     position: absolute;
     top: 60px;
     right: 41px;
+  }
+}
+div.logoutmodal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 60px 44px;
+  span.title {
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    color: #000000;
+    margin-bottom: 20px;
+    width: 329px;
+  }
+  span.desc {
+    font-size: 16px;
+    line-height: 19px;
+    color: #9C9C9C;
+    max-width: 296px;
+    margin-bottom: 30px;
+  }
+  div.btns {
+    display: flex;
+    align-items: cetner;
+    justify-content: flex-end;
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+    }
+    span.cancel {
+      width: 113px;
+      height: 32px;
+      background: #FF7777;
+      border-radius: 16px;
+      text-align: center;
+      color: #FFFFFF;
+      margin-right: 20px;
+    }
+    span.logout { 
+      width: 113px;
+      height: 32px;
+      border: 1px solid #000000;
+      box-sizing: border-box;
+      border-radius: 16px;
+      color: #000000;
+    }
   }
 }
 @media only screen and (max-width: 768px) {

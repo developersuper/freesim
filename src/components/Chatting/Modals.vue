@@ -13,7 +13,7 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import Modal from './elements/Modal'
+import Modal from '@/components/Layout/Modal'
 import CallHistory from './CustomModals/CallHistory'
 import VoiceCallDial from './CustomModals/VoiceCallDial'
 import VideoCall from './CustomModals/VideoCall'

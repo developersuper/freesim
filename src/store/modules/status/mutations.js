@@ -32,6 +32,9 @@ const mutations = {
   },
   setCall(state, call) {
     state.call = call
+  },
+  setChats(state, chats) {
+    state.chats = chats
   }
 }
 

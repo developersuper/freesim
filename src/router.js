@@ -8,6 +8,7 @@ import Settings from '@/pages/Settings.vue'
 import PhonesAndPlanes from '@/pages/PhonesAndPlanes.vue'
 import Forgot from '@/pages/Forgot.vue'
 import Logout from '@/pages/Logout.vue'
+import BuyPhoneNumber from '@/pages/BuyPhoneNumber.vue'
 
 const routes = [
   {
@@ -54,6 +55,11 @@ const routes = [
     name: "Logout",
     component: Logout,
   },
+  {
+    path: "/buyphonenumber",
+    name: "BuyPhoneNumber",
+    component: BuyPhoneNumber
+  }
 ];
 
 const router = createRouter({
