@@ -9,6 +9,14 @@
           <span class="logout action" @click="clickButton('logout')">Log Out</span>
         </div>
       </div>
+      <div v-if="modal === 'logoutfromthisdevice'" class="logoutmodal">
+        <span class="title">Log out for this device</span>
+        <span class="desc">This will log you out from this device you're currently logged in on.</span>
+        <div class="btns">
+          <span class="cancel action" @click="clickButton('cancel')">Cancel</span>
+          <span class="logout action" @click="clickButton('logout')">Log Out</span>
+        </div>
+      </div>
     </template>
   </modal>
   <desktop-layout>
@@ -150,14 +158,14 @@
               <span class="settings-body-title" style="margin-bottom: 10px;">Security & Login</span>
               <div class="securitylogin-alldevice">
                 <span>Recent activity</span>
-                <span class="action action-title" @click="logout">Log out of all device</span>
+                <span class="action action-title" @click="logout('logoutfromalldevices')">Log out of all device</span>
               </div>
               <div class="securitylogin-activity">
                 <div class="securitylogin-activity-leftpart">
                   <span>Windows - Chrome Dev</span>
                   <span class="action action-title">Today at 8:30 AM</span>
                 </div>
-                <span class="action action-title" >Log out</span>
+                <span class="action action-title" @click="logout('logoutfromthisdevice')">Log out</span>
               </div>
               <div class="securitylogin-activity">
                 <div class="securitylogin-activity-leftpart">
@@ -269,8 +277,8 @@ export default {
         }
       }))
     },
-    logout() {
-      this.$store.commit('setModal', 'logoutfromalldevices')
+    logout(modal) {
+      this.$store.commit('setModal', modal)
     },
     clickButton(btnName) {
       console.log(btnName)

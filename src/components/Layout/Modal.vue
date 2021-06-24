@@ -28,7 +28,7 @@ export default {
       if(this.modal === 'videocall'){
         return 'modal-container videocall'
       }
-      if(this.modal === 'logoutfromalldevices') {
+      if(this.modal === 'logoutfromalldevices' || this.modal === 'logoutfromthisdevice') {
         return 'modal-container logoutfromalldevices'
       }
       return 'modal-container'
