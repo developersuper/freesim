@@ -85,6 +85,9 @@ export default {
       this.$emit('country', item)
     },
     focus() {
+      if(this.show) {
+        return
+      }
       this.$refs.input.focus();
     }
   },
