@@ -10,8 +10,8 @@
         </div>
       </div>
       <div v-if="modal === 'logoutfromthisdevice'" class="logoutmodal">
-        <span class="title">Log out for this device</span>
-        <span class="desc">This will log you out from this device you're currently logged in on.</span>
+        <span class="title">Log Out for this Device</span>
+        <span class="desc">This will log you out of Free SIM from this device you're currently logged in on.</span>
         <div class="btns">
           <span class="cancel action" @click="clickButton('cancel')">Cancel</span>
           <span class="logout action" @click="clickButton('logout')">Log Out</span>
