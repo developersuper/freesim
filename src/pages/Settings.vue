@@ -150,14 +150,14 @@
               <span class="settings-body-title" style="margin-bottom: 10px;">Security & Login</span>
               <div class="securitylogin-alldevice">
                 <span>Recent activity</span>
-                <span class="action action-title">Log out of all device</span>
+                <span class="action action-title" @click="logout">Log out of all device</span>
               </div>
               <div class="securitylogin-activity">
                 <div class="securitylogin-activity-leftpart">
                   <span>Windows - Chrome Dev</span>
                   <span class="action action-title">Today at 8:30 AM</span>
                 </div>
-                <span class="action action-title" @click="logout">Log out</span>
+                <span class="action action-title" >Log out</span>
               </div>
               <div class="securitylogin-activity">
                 <div class="securitylogin-activity-leftpart">
@@ -432,8 +432,8 @@ div.settings {
       }
     }
     div.blockednumbers {
-      max-height: calc(var(--vh, 1vh) * 60);
-      -webkit-max-height: calc(var(--vh, 1vh) * 60);
+      max-height: calc(var(--vh, 1vh) * 50);
+      -webkit-max-height: calc(var(--vh, 1vh) * 50);
       overflow-y: auto;
       max-width: 400px;
     }
