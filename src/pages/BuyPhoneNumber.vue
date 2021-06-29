@@ -13,7 +13,8 @@
           <span 
             v-if="step === 'number'"
             class="desc">
-            Number will be refreshed in 45 seconds<br>Change area code
+            Number will be refreshed in 45 seconds
+            <span class="action" @click="step = 'countrycode'">Change area code</span>
           </span>
           <div v-if="step==='countrycode'" class="select-areacode">
             <country-code-selector @country="setCountry" />
@@ -159,11 +160,27 @@ div.buyphonenumber {
       margin-bottom: 14px;
     }
     span.desc {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       font-size: 16px;
       line-height: 19px;
       text-align: center;
       color: #6B6B6B;
       margin-bottom: 40px;
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 179px;
+        height: 40px;
+        background: #FE3030;
+        border-radius: 31.5px;
+        font-size: 17px;
+        text-align: center;
+        color: #FFFFFF;
+        margin-top: 14px;
+      }
     }
     div.select-areacode {
       margin-bottom: 30px;

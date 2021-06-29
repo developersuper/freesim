@@ -19,8 +19,8 @@
       }
     }
     &_hover {
-      color: $item-hover-color;
-      background-color: $item-hover-bg;
+      // color: $item-hover-color;
+      // background-color: $item-hover-bg;
     }
     &_mobile {
       color: $mobile-item-color;
@@ -44,8 +44,8 @@
     .vsm--link_level-1 {
       &.vsm--link_hover {
         .vsm--icon {
-          color: $mobile-icon-color;
-          background-color: $mobile-icon-bg;
+          // color: $mobile-icon-color;
+          // background-color: $mobile-icon-bg;
         }
       }
     }
@@ -86,4 +86,8 @@
     color: $item-color;
     background-color: darken( $base-bg, 5% );
   }
+}
+li.vsm--item {
+            color: $mobile-icon-color;
+          background-color: $mobile-icon-bg;
 }
